@@ -682,6 +682,7 @@ pre code {
 .col-6 {
   flex: 0 0 50%;
   max-width: 50%;
+  height:auto;
 }
 
 .col-7 {
