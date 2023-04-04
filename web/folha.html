@@ -85,7 +85,10 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Folha Pagamento:</h6>
-                        <a class="collapse-item" href="folha.html">Folha</a>
+                        <a class="collapse-item" href="folha.html">Competência</a>
+                        <a class="collapse-item" href="folha.html">Horas</a>
+                        <a class="collapse-item" href="folha.html">Convênios</a>
+                        <a class="collapse-item" href="folha.html">Descontos</a>
                         <!--<a class="collapse-item" href="utilities-border.html"> ""</a>
                         <a class="collapse-item" href="utilities-animation.html"> ""</a>
                         <a class="collapse-item" href="utilities-other.html"> ""</a>-->
@@ -262,12 +265,184 @@
                                             <input type="text" id="cpf" placeholder="Digite o CPF" class="input form-control form-control-xs" required/>
                                         </div>
                                     </form>
-                                </div> 
+                                </div>
+                            </div> 
+                            <!-- end of Personal Data -->
+
+                            <!-- Mounth Data -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Mês</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="container">
+                                        <p>Mês</p>
+                                        <select class="form-control form-control-xs selectpicker" name="" data-size="7" data-live-search="true" data-title="Location" id="state_list" data-width="100%">
+                                            <option value="" selected>Mês Atual</option>
+                                            <option value="">Janeiro</option>
+                                            <option value="">Fevereiro</option>
+                                            <option value="">Março</option>
+                                            <option value="">Abril</option>
+                                            <option value="">Maio</option>
+                                            <option value="">Junho</option>
+                                            <option value="">Julho</option>
+                                            <option value="">Agosto</option>
+                                            <option value="">Setembro</option>
+                                            <option value="">Outubro</option>
+                                            <option value="">Novembro</option>
+                                            <option value="">Dezembro</option>
+                                        </select>
+                                    </div>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Total de Dias</p>
+                                            <input type="text" id="TotalDias" placeholder="Digite Total de Dias no Mês" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Total de Dias Úteis</p>
+                                            <input type="text" id="TotalDiasUteis" placeholder="Digite Total de Dias Úteis no Mês" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Total de Feriados</p>
+                                            <input type="text" id="TotalFeriados" placeholder="Digite Total de Feriados no Mês" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                            <!--end of Personal Data -->
+                            <!-- end of Mounth Data -->
+
+                            <!-- Taxes Data -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Impostos</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Valor INSS</p>
+                                            <input type="text" id="ValorINSS" placeholder="Digite o Valor de INSS" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Valor de IRRF</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite o Valor de IRRF" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--end of Taxes -->  
+
+                            <!-- Discounts for Partnerships -->
+                            
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Desconto de Convênios</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Cartão Acivale</p>
+                                            <input type="text" id="ValorINSS" placeholder="Digite o Valor de Desconto Cartão Acivale" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Unimed</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite o Valor de Desconto Unimed" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Despesas Unimed</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite o Valor de Desconto Despesas Unimed" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Farmacia</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite o Valor de Desconto Farmacia" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--end of Discounts for Partnerships --> 
+
+                            <!-- Travel Data -->
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Viagens</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Deslocamento</p>
+                                            <input type="text" id="ValorINSS" placeholder="Digite o Valor de Desloamento" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Reembolso Despesa Viagens</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite o Valor de Reembolso Despesa Viagens" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--end of Travel --> 
+
+                            <!-- Other Data -->
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Outros</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>OS</p>
+                                            <input type="text" id="ValorINSS" placeholder="Digite o Valor de OS" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Multas</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite o Valor de Multas" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Pensão</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite o Valor de Pensão" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Plantão</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite o Valor de Plantão" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Outros Descontos</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite o Valor de Outros Descontos" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--end of Travel --> 
+
                         </div>
-                        <div class="col-lg-6">
+                        <!-- end of Column-->
+
+                        <div class= "col-lg-6">
+
                             <!-- Company Data -->
+
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Empresa</h6>
@@ -321,79 +496,123 @@
                                     </form>
                                 </div>
                             </div>
+
                             <!--end of Company Data --> 
-                        </div>
-                        <div class="col-lg-3">   
-                            <!-- Mounth Data -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Mês</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="container">
-                                        <p>Mês</p>
-                                        <select class="form-control form-control-xs selectpicker" name="" data-size="7" data-live-search="true" data-title="Location" id="state_list" data-width="100%">
-                                            <option value="" selected>Mês Atual</option>
-                                            <option value="">Janeiro</option>
-                                            <option value="">Fevereiro</option>
-                                            <option value="">Março</option>
-                                            <option value="">Abril</option>
-                                            <option value="">Maio</option>
-                                            <option value="">Junho</option>
-                                            <option value="">Julho</option>
-                                            <option value="">Agosto</option>
-                                            <option value="">Setembro</option>
-                                            <option value="">Outubro</option>
-                                            <option value="">Novembro</option>
-                                            <option value="">Dezembro</option>
-                                        </select>
-                                    </div>
-                                    <form class="container"> 
-                                        <div class="full-cpf form-group" margin=10px>
-                                            <p>Total de Dias</p>
-                                            <input type="text" id="TotalDias" placeholder="Digite Total de Dias no Mês" class="input form-control form-control-xs" required/>
-                                        </div>
-                                    </form>
-                                    <form class="container"> 
-                                        <div class="full-cpf form-group" margin=10px>
-                                            <p>Total de Dias Úteis</p>
-                                            <input type="text" id="TotalDiasUteis" placeholder="Digite Total de Dias Úteis no Mês" class="input form-control form-control-xs" required/>
-                                        </div>
-                                    </form>
-                                    <form class="container"> 
-                                        <div class="full-cpf form-group" margin=10px>
-                                            <p>Total de Feriados</p>
-                                            <input type="text" id="TotalFeriados" placeholder="Digite Total de Feriados no Mês" class="input form-control form-control-xs" required/>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- end of Mounth Data -->
-                        </div>
-                        <div class="col-lg-3">
+
+                            <!-- Hours Data -->
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Impostos</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Horas</h6>
                                 </div>
                                 <div class="card-body">
                                     <form class="container"> 
                                         <div class="full-cpf form-group" margin=10px>
-                                            <p>Valor INSS</p>
-                                            <input type="text" id="ValorINSS" placeholder="Digite o Valor de INSS" class="input form-control form-control-xs" required/>
+                                            <p>Hora Normal</p>
+                                            <input type="text" id="ValorINSS" placeholder="Digite a Quantidade de Horas Normal" class="input form-control form-control-xs" required/>
                                         </div>
                                     </form>
                                     <form class="container"> 
                                         <div class="full-cpf form-group" margin=10px>
-                                            <p>Valor de IRRF</p>
-                                            <input type="text" id="ValorIRRF" placeholder="Digite o Valor de IRRF" class="input form-control form-control-xs" required/>
+                                            <p>Hora Extra 50%</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite a Quantidade de Horas Extras 50%" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Hora Extra 65%</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite a Quantidade de Horas Extras 65%" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Hora Extra 75%</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite a Quantidade de Horas Extras 75%" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Hora Extra 100%</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite a Quantidade de Horas Extras 100%" class="input form-control form-control-xs" required/>
                                         </div>
                                     </form>
                                 </div>
                             </div>
+                            <!--end of Hours --> 
 
+                            <!-- Absenteeism Data -->
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Faltas</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Faltas em dias</p>
+                                            <input type="text" id="ValorINSS" placeholder="Digite a Quantidade de Faltas em Dias" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Faltas em Horas</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite a Quantidade de Faltas em Horas" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--end of Absenteeism --> 
+
+                            <!-- Meal discounts Data -->
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Descontos com Alimentação</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Café</p>
+                                            <input type="text" id="ValorINSS" placeholder="Digite o Valor de Desconto Café" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Marmita</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite o Valor de Desconto Marmita" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--end of Meal discounts --> 
+
+                            <!-- Payment Data -->
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Outros Recebimentos</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Outros Recebimentos</p>
+                                            <input type="text" id="ValorINSS" placeholder="Digite o Valor de Outros Recebimentos" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                    <form class="container"> 
+                                        <div class="full-cpf form-group" margin=10px>
+                                            <p>Valor Pago por Deposito</p>
+                                            <input type="text" id="ValorIRRF" placeholder="Digite o Valor Pago por Deposito" class="input form-control form-control-xs" required/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--end of Travel --> 
                         </div>
+                        <!--end of Column-->
+
                     </div>
+                    <!--end of Roll-->
 
                 </div>
                 <!-- /.container-fluid -->
@@ -405,7 +624,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Desenvolvido por <a href="matheuspinter.com.br">Matheus Henrique Pinter Maciel<a> | 2023</span>
+                        <span>Desenvolvido por <a href="https://br.linkedin.com/in/matheus-pinter">Matheus Henrique Pinter Maciel<a> | 2023</span>
                     </div>
                 </div>
             </footer>
@@ -422,7 +641,8 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
+    
+     <!-- Logout Modal -->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
