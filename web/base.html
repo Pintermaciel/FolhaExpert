@@ -5,11 +5,11 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="./img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=0.7, shrink-to-fit=no">
     <script type="text/javascript" src="/eel.js"></script>
+    <link rel="icon" href="./img/icon.png">
 
-    <title>FolhaExpert - 404</title>
+    <title>FolhaExpert</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -18,7 +18,8 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -171,24 +172,8 @@
             <!-- Main Content -->
             <div id="content">
 
-            <!-- Topbar -->
-            <div class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-            </div>
-            <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- 404 Error Text -->
-                    <div class="text-center">
-                        <div class="error mx-auto" data-text="404">404</div>
-                        <p class="lead text-gray-800 mb-5">Página não encontrada</p>
-                        <p class="text-gray-500 mb-0">Parece que você encontrou uma falha na matrix...</p>
-                        <a href="competencia.html">&larr; Voltar para a Folha</a>
-                    </div>
-
-                </div>
-                <!-- /.container-fluid -->
+                {% block content %}
+                {% endblock %}
 
             </div>
             <!-- End of Main Content -->
@@ -197,7 +182,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Desenvolvido por <a href="matheuspinter.com.br">Matheus Henrique Pinter Maciel<a> | 2023</span>
+                        <span>Desenvolvido por <a href="https://br.linkedin.com/in/matheus-pinter">Matheus Henrique Pinter Maciel<a> | 2023</span>
                     </div>
                 </div>
             </footer>
@@ -214,7 +199,8 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
+    
+     <!-- Logout Modal -->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
