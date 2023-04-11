@@ -1,0 +1,36 @@
+import sqlite3
+
+def showallrecords():
+    try:
+        connect = sqlite3.connect("C:\\Users\\Matheus\\OneDrive\\Área de Trabalho\\FolhaExpert\\startbootstrap-sb-admin-2-gh-pages\\web\\FolhaExpert\\web\\databases\\storage.db")
+        cursor = connect.cursor()
+        cursor.execute("SELECT * FROM setor")
+        setor = []
+        for item in cursor.fetchall():
+            #test = item[1]
+            #print(test)
+            setor.append(item)
+        return setor
+    except Exception as error:
+        print(error)
+        msg = "Erro"
+        return msg
+    
+def save_newsetor(empresa, setor, funcao, lider):
+    try:
+        connect = sqlite3.connect("web/database/storage.db")
+        cursor = connect.cursor()
+        
+        if empresa != "" and setor != "" and funcao != "" and lider != "":
+            cursor.execute("INSERT INTO setor(empresa, setor, funcao, lider) VALUES(?,?,?,?)", (empresa,setor,funcao,lider))
+            connect.commit()
+            connect.close()
+            msg = "sucess"
+            return msg
+        else:
+            msg = "failure"
+            return msg
+    except Exception as Error:
+        print(Error)
+        msg = "falhou"
+        return msg
