@@ -20,6 +20,7 @@ def save_newsetor(empresa, setor, funcao, lider):
     try:
         connect = sqlite3.connect("web/database/storage.db")
         cursor = connect.cursor()
+        print("Conexão com o banco de dados estabelecida com sucesso!")
         
         if empresa != "" and setor != "" and funcao != "" and lider != "":
             cursor.execute("INSERT INTO setor(empresa, setor, funcao, lider) VALUES(?,?,?,?)", (empresa,setor,funcao,lider))

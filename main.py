@@ -12,6 +12,7 @@ def fetchalldata():
     
 @eel.expose
 def btn_save(empresa, setor, funcao, lider):
+    print("Chamando a função btn_save")
     msg = save_newsetor(empresa, setor, funcao, lider)
     eel.save_returnsetor(str(msg))
 

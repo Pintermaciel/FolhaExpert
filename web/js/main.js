@@ -62,7 +62,6 @@ function showSetor(item, index){
 }
 
 // Novo Setor
-// Novo Setor
 async function save_setor_js(){
     if ($("#formsetor").valid()) {
         const empresa = $('#empresaInput').val();
@@ -70,10 +69,9 @@ async function save_setor_js(){
         const funcao = $('#funcaoInput').val();
         const lider = $('#liderInput').val();
         const result = await eel.btn_save(empresa, setor, funcao, lider)();
-        $('#save_return').text(result);
+        alert(result);
     }
 };
-
 
 eel.expose(save_returnsetor);
 function save_returnsetor(status) {
@@ -86,5 +84,8 @@ function save_returnsetor(status) {
     }
     if (status == "failure") {
         $('#return_register').text('Erro ao cadastrar, verifique os campos em branco.')
+    }
+    if (status == "falhou") {
+        $('#return_register').text('Erro ao cadastrar, contate o administrador.')
     }
 };
