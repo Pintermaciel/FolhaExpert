@@ -62,30 +62,25 @@ function showSetor(item, index){
 }
 
 // Novo Setor
-async function save_setor_js(){
+async function save_setor_js() {
     if ($("#formsetor").valid()) {
-        const empresa = $('#empresaInput').val();
-        const setor = $('#setorInput').val();
-        const funcao = $('#funcaoInput').val();
-        const lider = $('#liderInput').val();
-        const result = await eel.btn_save(empresa, setor, funcao, lider)();
-        alert(result);
-    }
-};
-
-eel.expose(save_returnsetor);
-function save_returnsetor(status) {
-    if (status == "sucess") {
-        $('#return_register').text('Novo cadastro concluido com sucesso.');
+      const empresa = $('#empresaInput').val();
+      const setor = $('#setorInput').val();
+      const funcao = $('#funcaoInput').val();
+      const lider = $('#liderInput').val();
+  
+      const status = await eel.btn_save(empresa, setor, funcao, lider)();
+  
+      if (status === "success") {
+        $('#return_register').text('Novo cadastro concluído com sucesso.');
         $('#empresaInput').val('');
         $('#setorInput').val('');
         $('#funcaoInput').val('');
         $('#liderInput').val('');
+      } else if (status === "failure") {
+        $('#return_register').text('Erro ao cadastrar, verifique os campos em branco.');
+      } else if (status === "falhou") {
+        $('#return_register').text('Erro ao cadastrar, contate o administrador.');
+      }
     }
-    if (status == "failure") {
-        $('#return_register').text('Erro ao cadastrar, verifique os campos em branco.')
-    }
-    if (status == "falhou") {
-        $('#return_register').text('Erro ao cadastrar, contate o administrador.')
-    }
-};
+  }
