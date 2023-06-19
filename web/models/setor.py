@@ -18,7 +18,7 @@ def showallrecords():
 
 def save_newsetor(empresa, setor, funcao, lider):
     try:
-        connect = sqlite3.connect(r"C:\\Users\\pinte\\OneDrive\\Área de Trabalho\\FolhaExpert\\web\\databases\\storage.db")
+        connect = sqlite3.connect("web/databases/storage.db")
         cursor = connect.cursor()
         print("Conexão com o banco de dados estabelecida com sucesso!")
         
@@ -26,7 +26,7 @@ def save_newsetor(empresa, setor, funcao, lider):
             cursor.execute("INSERT INTO setor(empresa, setor, funcao, lider) VALUES(?,?,?,?)", (empresa,setor,funcao,lider))
             connect.commit()
             connect.close()
-            msg = "success"
+            msg = "sucess"
             return msg
         else:
             msg = "failure"
