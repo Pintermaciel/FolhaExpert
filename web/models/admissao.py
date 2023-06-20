@@ -16,14 +16,14 @@ def showallrecordsadm():
         msg = "Erro"
         return msg
 
-def save_newadm(nome, cpf, empresa, setor, salariof, salario):
+def save_newadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm):
     try:
         connect = sqlite3.connect("web/databases/storage.db")
         cursor = connect.cursor()
         print("Conexão com o banco de dados estabelecida com sucesso!")
         
-        if nome != "" and cpf != "" and empresa != "" and setor != "" and salariof != "" and salario != "":
-            cursor.execute("INSERT INTO setor(nome, cpf, empresa, setor, salariof, salario) VALUES(?,?,?,?,?,?)", (nome,cpf,empresa,setor,salariof,salario))
+        if nome != "" and cpf != "" and empresa != "" and setor != "" and cargo != "" and salariof != "" and salario != "" and dataadm != "":
+            cursor.execute("INSERT INTO admissao(nome, cpf, empresa, setor, cargo, salario_folha, salario, data_admissao) VALUES(?,?,?,?,?,?,?,?)", (nome,cpf,empresa,setor,cargo,salariof,salario,dataadm))
             connect.commit()
             connect.close()
             msg = "sucess"

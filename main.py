@@ -29,9 +29,9 @@ def fetchalldataadm():
     eel.action_outadm(select_reg)
     
 @eel.expose
-def btn_saveadm(nome, cpf, empresa, setor, salariof, salario):
+def btn_saveadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm):
     print("Chamando a função btn_save")
-    msg = save_newadm(nome, cpf, empresa, setor, salariof, salario)
+    msg = save_newadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm)
     eel.save_returnadm(str(msg))
 
 eel.start(

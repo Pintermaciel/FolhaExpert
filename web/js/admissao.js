@@ -80,9 +80,11 @@ async function save_adm_js(){
         const cpf = $('#cpfInput').val();
         const empresa = $('#empresaInput').val();
         const setor = $('#setorInput').val();
+        const cargo = $('#cargoInput').val();
         const salariof = $('#salariofInput').val();
-        const salario = $('salarioInput')
-        const result = await eel.btn_save(nome, cpf, empresa, setor, salariof, salario)();
+        const salario = $('#salarioInput').val();
+        const dataadm = $('#dataadmInput').val();
+        const result = await eel.btn_saveadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm)();
         location.reload();
     }
 };
