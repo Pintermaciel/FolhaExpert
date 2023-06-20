@@ -1,29 +1,29 @@
 import sqlite3
 
-def showallrecords():
+def showallrecordsadm():
     try:
         connect = sqlite3.connect(r"web/databases/storage.db")
         cursor = connect.cursor()
-        cursor.execute("SELECT * FROM setor")
-        setor = []
+        cursor.execute("SELECT * FROM admissao")
+        admissao = []
         for item in cursor.fetchall():
             test = item[1]
             print(test)
-            setor.append(item)
-        return setor
+            admissao.append(item)
+        return admissao
     except Exception as error:
         print(error)
         msg = "Erro"
         return msg
 
-def save_newsetor(empresa, setor, funcao, lider):
+def save_newadm(nome, cpf, empresa, setor, salariof, salario):
     try:
-        connect = sqlite3.connect(r"web/databases/storage.db")
+        connect = sqlite3.connect("web/databases/storage.db")
         cursor = connect.cursor()
         print("Conexão com o banco de dados estabelecida com sucesso!")
         
-        if empresa != "" and setor != "" and funcao != "" and lider != "":
-            cursor.execute("INSERT INTO setor(empresa, setor, funcao, lider) VALUES(?,?,?,?)", (empresa,setor,funcao,lider))
+        if nome != "" and cpf != "" and empresa != "" and setor != "" and salariof != "" and salario != "":
+            cursor.execute("INSERT INTO setor(nome, cpf, empresa, setor, salariof, salario) VALUES(?,?,?,?,?,?)", (nome,cpf,empresa,setor,salariof,salario))
             connect.commit()
             connect.close()
             msg = "sucess"
