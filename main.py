@@ -1,7 +1,7 @@
 import eel
 from web.models.setor import showallrecords, save_newsetor
 from web.models.admissao import showallrecordsadm, save_newadm
-from web.models.rescisao import showallrecordsres, save_newres
+from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao
 import pyautogui
 
 
@@ -54,6 +54,12 @@ def btn_saveres(nome, datares, liquidores, carteirares, motivo):
     print("Chamando a função btn_save")
     msg = save_newres(nome, datares, liquidores, carteirares, motivo)
     eel.save_returnres(str(msg))
+
+#edita no banco de dados
+@eel.expose
+def get_rescisao(id):
+    selected_rescisao = show_selectedRescisao(id)
+    eel.action_editres(selected_rescisao)
 
 
 """   START   """

@@ -267,6 +267,50 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- editres Modal -->
+                                <div class="modal fade" id="editresmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Editar Rescisão</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <form id="formres" action="#">
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="nomeInput">Nome</label>
+                                                        <input type="text" class="form-control" required id="editnomeInput" placeholder="Digite o Nome">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="dataresInput">Data de Rescisão</label>
+                                                        <input type="text" class="form-control" required id="editdataresInput" placeholder="Digite a Data de Rescisão">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="liquidoresInput">Liquido Rescisão</label>
+                                                        <input type="text" class="form-control" required id="editliquidoresInput" placeholder="Digite o Valor Liquido">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="carteiraresInput">Carteira Rescisão</label>
+                                                        <input type="text" class="form-control" required id="editcarteiraresInput" placeholder="Digite o Valor Carteira">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="motivoInput">Motivo</label>
+                                                        <input type="text" class="form-control" required id="editmotivoInput" placeholder="Digite o Motivo">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary required" type="button" data-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-primary" onclick="save_res_js();" id="save_return">Salvar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
                         </div>
                     </div>
                     <!--end of Roll-->

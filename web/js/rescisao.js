@@ -12,6 +12,30 @@ function action_outres(rescisao){
     rescisao.forEach(showRes)
 }
 
+eel.expose(action_editres)
+function action_editres(editrescisao){
+    //alert(editrescisao);  
+    editrescisao.forEach(get_array_values)
+}
+
+function get_array_values(item, index){
+    //alert(item);
+    //alert(index);
+    if (index == 1) {
+        document.getElementById("editnomeInput").value = item;
+    } else if (index == 2) {
+        document.getElementById("editdataresInput").value = item;
+    } else if (index == 3) {
+        document.getElementById("editliquidoresInput").value = item;
+    } else if (index == 4) {
+        document.getElementById("editcarteiraresInput").value = item;
+    } else if (index == 5) {
+        document.getElementById("editmotivoInput").value = item;
+    }
+    else {}
+ 
+}
+
 function showRes(item, index){
     var get_table = document.getElementById("rescisao");
     var tr = document.createElement("tr");
@@ -36,10 +60,12 @@ function showRes(item, index){
     var btnDelete = document.createElement("button");
     var infoIcon = document.createElement("i");
     var deleteIcon = document.createElement("i");
+    
 
     btnInfo.classList.add("btn", "btn-info", "btn-circle");
     btnInfo.setAttribute("type", "button");
     btnInfo.setAttribute("data-ripple-color", "dark");
+    btnInfo.setAttribute("onclick", "btn_edit('" + id + "')");
 
     btnDelete.classList.add("btn", "btn-danger", "btn-circle");
     btnDelete.setAttribute("type", "button");
@@ -65,7 +91,7 @@ function showRes(item, index){
     get_table.appendChild(tr);
 }
 
-// Nova Admissão
+// Nova Rescisão
 async function save_res_js(){
     if ($("#formres").valid()) {
         const nome = $('#nomeInput').val();
@@ -94,3 +120,9 @@ function save_returnres(status) {
         $('#return_register').text('Erro ao cadastrar, contate o administrador.')
     }
 };
+
+// Editar Rescisão
+async function btn_edit(id){
+    await  eel.get_rescisao(id)();
+    $('#editresmodal').modal("show");
+}

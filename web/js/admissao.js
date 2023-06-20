@@ -45,6 +45,7 @@ function showAdm(item, index){
     btnInfo.classList.add("btn", "btn-info", "btn-circle");
     btnInfo.setAttribute("type", "button");
     btnInfo.setAttribute("data-ripple-color", "dark");
+    btnInfo.setAttribute("onclick", "btn_edit('" + id + "')");
 
     btnDelete.classList.add("btn", "btn-danger", "btn-circle");
     btnDelete.setAttribute("type", "button");
