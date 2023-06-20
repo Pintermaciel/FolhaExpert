@@ -194,7 +194,7 @@
                                         <div class="col-lg-6">
                                             <div class=" py-1 text-right">
                                                 <br>
-                                                <button type="button" class="btn btn-success btn-icon-split" data-ripple-color="dark">
+                                                <button type="button" id="btn_addres" class="btn btn-success btn-icon-split" data-ripple-color="dark">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-check"></i>
                                                     </span>
@@ -207,7 +207,7 @@
                                 </div>
                                 <div class="card-body">
 
-                                    <table class="table align-middle">
+                                    <table id="rescisao"class="table align-middle">
                                         <thead>
                                         <tr>
                                             <th scope="col">Cod</th>
@@ -220,42 +220,53 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Matheus Henrique Pinter Maciel</td>
-                                            <td>25/03/2023</td>
-                                            <td>R$5.000,00</td>
-                                            <td>R$2.500,00</td>
-                                            <td>Pedido de Demissão</td>
-                                            <td>
-                                                <button type="button" class="btn btn-info btn-circle" data-ripple-color="dark">
-                                                    <i class="fas fa-info-circle"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-circle" data-ripple-color="dark">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Matheus Henrique Pinter Maciel</td>
-                                            <td>25/03/2023</td>
-                                            <td>R$5.000,00</td>
-                                            <td>R$2.500,00</td>
-                                            <td>Pedido de Demissão</td>
-                                            <td>
-                                                <button type="button" class="btn btn-info btn-circle" data-ripple-color="dark">
-                                                    <i class="fas fa-info-circle"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-circle" data-ripple-color="dark">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
+                                <!-- addadm Modal -->
+                                <div class="modal fade" id="addresModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Nova Rescisão</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <form id="formres" action="#">
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="nomeInput">Nome</label>
+                                                        <input type="text" class="form-control" required id="nomeInput" placeholder="Digite o Nome">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="dataresInput">Data de Rescisão</label>
+                                                        <input type="text" class="form-control" required id="dataresInput" placeholder="Digite a Data de Rescisão">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="liquidoresInput">Liquido Rescisão</label>
+                                                        <input type="text" class="form-control" required id="liquidoresInput" placeholder="Digite o Valor Liquido">
+                                                    </div>
+                                                    <!-- PRECISA MUDAR PARA SELECT E CONSULTAR A TABELA DE SETORES -->
+                                                    <div class="form-group">
+                                                        <label for="carteiraresInput">Carteira Rescisão</label>
+                                                        <input type="text" class="form-control" required id="carteiraresInput" placeholder="Digite o Valor Carteira">
+                                                    </div>
+                                                    <!-- PRECISA MUDAR PARA SELECT E CONSULTAR A TABELA DE SETORES -->
+                                                    <div class="form-group">
+                                                        <label for="motivoInput">Motivo</label>
+                                                        <input type="text" class="form-control" required id="motivoInput" placeholder="Digite o Motivo">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary required" type="button" data-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-primary" onclick="save_res_js();" id="save_return">Salvar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                     <!--end of Roll-->
@@ -270,7 +281,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Desenvolvido por <a href="https://br.linkedin.com/in/matheus-pinter">Matheus Henrique Pinter Maciel<a> | 2023</span>
+                        <span>Desenvolvido por <a href="">Matheus Henrique Pinter Maciel<a> | 2023</span>
                     </div>
                 </div>
             </footer>
@@ -319,8 +330,8 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Eel javascripts-->
-    <script src="js/main.js"></script>
-
+    <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../js/rescisao.js"></script>
 </body>
 
 </html>
