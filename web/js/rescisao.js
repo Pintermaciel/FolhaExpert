@@ -1,35 +1,36 @@
 $(document).ready(function(){
-    eel.fetchalldatares()
+    eel.fetchalldatares();
 
     $("#btn_addres").on("click", function(){
         $("#addresModal").modal("show");
     });
-})
+});
 
-eel.expose(action_outres)
+eel.expose(action_outres);
 function action_outres(rescisao){
-    //alert(registers);
-    rescisao.forEach(showRes)
+    // Função chamada quando os dados de rescisão são recebidos do Python
+    // Aqui você pode realizar as ações necessárias para exibir os dados na página
+    rescisao.forEach(showRes);
 }
 
-
-//        ---------------------------------- -------------------------------------------- -------------------------------------------------------
 
 // Editar Rescisão
 async function btn_edit(id){
-    await  eel.get_rescisao(id)();
+    // Função chamada quando o botão de edição é clicado
+    // Aqui você pode realizar as ações necessárias para obter os dados do registro a ser editado
+    await eel.get_rescisao(id)();
     $('#editresmodal').modal("show");
 }
 
-eel.expose(action_editres)
+eel.expose(action_editres);
 function action_editres(editrescisao){
-    //alert(editrescisao);  
-    editrescisao.forEach(get_array_values)
+    // Função chamada quando os dados do registro a ser editado são recebidos do Python
+    // Aqui você pode realizar as ações necessárias para preencher o formulário de edição com os dados
+    editrescisao.forEach(get_array_values);
 }
 
 function get_array_values(item, index){
-    //alert(item);
-    //alert(index);
+    // Função auxiliar para obter os valores dos dados do registro e preencher o formulário de edição
     if (index == 0) {
         document.getElementById("editid").value = item;
     } else if (index == 1) {
@@ -44,26 +45,25 @@ function get_array_values(item, index){
         document.getElementById("editmotivoInput").value = item;
     }
     else {}
- 
 }
 
 async function save_edit_js(){
-if ($("#editresform").valid()) {
-    const nomeedit = $('#editnomeInput').val();
-    const dataresedit = $('#editdataresInput').val();
-    const liquidoresedit = $('#editliquidoresInput').val();
-    const carteiraresedit = $('#editcarteiraresInput').val();
-    const motivoedit = $('#editmotivoInput').val();
-    const editid = $('#editid').val();
-    const result = await eel.btn_saveeditres(nomeedit, dataresedit, liquidoresedit, carteiraresedit, motivoedit, editid)();
-    location.reload();
+    // Função chamada quando o botão de salvar edição é clicado
+    // Aqui você pode realizar as ações necessárias para obter os valores dos campos de edição e enviar ao Python para atualizar o registro
+    if ($("#editresform").valid()) {
+        const nomeedit = $('#editnomeInput').val();
+        const dataresedit = $('#editdataresInput').val();
+        const liquidoresedit = $('#editliquidoresInput').val();
+        const carteiraresedit = $('#editcarteiraresInput').val();
+        const motivoedit = $('#editmotivoInput').val();
+        const editid = $('#editid').val();
+        const result = await eel.btn_saveeditres(nomeedit, dataresedit, liquidoresedit, carteiraresedit, motivoedit, editid)();
+        location.reload();
+    }
 }
-};
-
-
-//        ---------------------------------- -------------------------------------------- -------------------------------------------------------
 
 function showRes(item, index){
+    // Função para exibir os dados de um registro de rescisão na tabela da página
     var get_table = document.getElementById("rescisao");
     var tr = document.createElement("tr");
     var td = document.createElement("td");
@@ -87,7 +87,6 @@ function showRes(item, index){
     var btnDelete = document.createElement("button");
     var infoIcon = document.createElement("i");
     var deleteIcon = document.createElement("i");
-    
 
     btnInfo.classList.add("btn", "btn-info", "btn-circle");
     btnInfo.setAttribute("type", "button");
@@ -117,10 +116,11 @@ function showRes(item, index){
 
     get_table.appendChild(tr);
 }
-//        ---------------------------------- -------------------------------------------- -------------------------------------------------------
 
 // Nova Rescisão
 async function save_res_js(){
+    // Função chamada quando o botão de salvar nova rescisão é clicado
+    // Aqui você pode realizar as ações necessárias para obter os valores dos campos de novo registro e enviar ao Python para salvar
     if ($("#formres").valid()) {
         const nome = $('#nomeInput').val();
         const datares = $('#dataresInput').val();
@@ -130,21 +130,23 @@ async function save_res_js(){
         const result = await eel.btn_saveres(nome, datares, liquidores, carteirares, motivo)();
         location.reload();
     }
-};
+}
 
 eel.expose(save_returnres);
 function save_returnres(status) {
+    // Função chamada quando o retorno do salvamento da nova rescisão é recebido do Python
+    // Aqui você pode exibir uma mensagem de sucesso ou erro na página com base no status recebido
     if (status == "sucess") {
-        $('#return_register').text('Novo cadastro concluido com sucesso.');
+        $('#return_register').text('Novo cadastro concluído com sucesso.');
         $('#empresaInput').val('');
         $('#setorInput').val('');
         $('#funcaoInput').val('');
         $('#liderInput').val('');
     }
     if (status == "failure") {
-        $('#return_register').text('Erro ao cadastrar, verifique os campos em branco.')
+        $('#return_register').text('Erro ao cadastrar, verifique os campos em branco.');
     }
     if (status == "falhou") {
-        $('#return_register').text('Erro ao cadastrar, contate o administrador.')
+        $('#return_register').text('Erro ao cadastrar, contate o administrador.');
     }
-};
+}
