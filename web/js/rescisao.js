@@ -12,6 +12,15 @@ function action_outres(rescisao){
     rescisao.forEach(showRes)
 }
 
+
+//        ---------------------------------- -------------------------------------------- -------------------------------------------------------
+
+// Editar Rescisão
+async function btn_edit(id){
+    await  eel.get_rescisao(id)();
+    $('#editresmodal').modal("show");
+}
+
 eel.expose(action_editres)
 function action_editres(editrescisao){
     //alert(editrescisao);  
@@ -50,6 +59,9 @@ if ($("#editresform").valid()) {
     location.reload();
 }
 };
+
+
+//        ---------------------------------- -------------------------------------------- -------------------------------------------------------
 
 function showRes(item, index){
     var get_table = document.getElementById("rescisao");
@@ -105,6 +117,7 @@ function showRes(item, index){
 
     get_table.appendChild(tr);
 }
+//        ---------------------------------- -------------------------------------------- -------------------------------------------------------
 
 // Nova Rescisão
 async function save_res_js(){
@@ -135,9 +148,3 @@ function save_returnres(status) {
         $('#return_register').text('Erro ao cadastrar, contate o administrador.')
     }
 };
-
-// Editar Rescisão
-async function btn_edit(id){
-    await  eel.get_rescisao(id)();
-    $('#editresmodal').modal("show");
-}

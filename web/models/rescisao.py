@@ -20,7 +20,7 @@ def save_newres(nome, datares, liquidores, carteirares, motivo):
     try:
         connect = sqlite3.connect("web/databases/storage.db")
         cursor = connect.cursor()
-        print("Conexão com o banco de dados estabelecida com sucesso!")
+        print("Conexão com o banco de dados estabelecida com sucesso! save_newres")
         
         if nome != "" and datares != "" and liquidores != "" and carteirares != "" and motivo != "":
             cursor.execute("INSERT INTO rescisao(nome, datares, liquidores, carteirares, motivo) VALUES(?,?,?,?,?)", (nome,datares,liquidores,carteirares,motivo))
@@ -40,7 +40,7 @@ def show_selectedRescisao(id):
     try:
         connect = sqlite3.connect("web/databases/storage.db")
         cursor = connect.cursor()
-        print("Conexão com o banco de dados estabelecida com sucesso!")
+        print("Conexão com o banco de dados estabelecida com sucesso! show_selectedRescisao")
         cursor.execute("SELECT * FROM rescisao WHERE id =?", (id,))
         editrescisao = []
         for item in cursor.fetchone():
@@ -56,7 +56,7 @@ def update_res(nomeedit, dataresedit, liquidoresedit, carteiraresedit, motivoedi
     try:
         connect = sqlite3.connect("web/databases/storage.db")
         cursor = connect.cursor()
-        print("Conexão com o banco de dados estabelecida com sucesso!")
+        print("Conexão com o banco de dados estabelecida com sucesso! update_res")
 
         if nomeedit != "" and dataresedit != "" and liquidoresedit != "" and carteiraresedit != "" and motivoedit != "":
             cursor.execute("UPDATE rescisao SET nome =?, datares =?, liquidores =?, carteirares =?, motivo =? WHERE id =?", (nomeedit, dataresedit, liquidoresedit, carteiraresedit, motivoedit, editid))
