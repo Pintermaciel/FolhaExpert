@@ -1,7 +1,7 @@
 import eel
 from web.models.setor import showallrecords, save_newsetor
 from web.models.admissao import showallrecordsadm, save_newadm
-from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao
+from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res
 import pyautogui
 
 
@@ -60,6 +60,12 @@ def btn_saveres(nome, datares, liquidores, carteirares, motivo):
 def get_rescisao(id):
     selected_rescisao = show_selectedRescisao(id)
     eel.action_editres(selected_rescisao)
+
+@eel.expose
+def btn_saveeditres(nomeedit, dataresedit, liquidoresedit, carteiraresedit, motivoedit, editid):
+    print("Chamando a função btn_saveeditres")
+    msg = update_res(nomeedit, dataresedit, liquidoresedit, carteiraresedit, motivoedit, editid)
+    
 
 
 """   START   """

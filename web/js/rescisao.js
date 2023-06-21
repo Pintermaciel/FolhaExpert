@@ -21,7 +21,9 @@ function action_editres(editrescisao){
 function get_array_values(item, index){
     //alert(item);
     //alert(index);
-    if (index == 1) {
+    if (index == 0) {
+        document.getElementById("editid").value = item;
+    } else if (index == 1) {
         document.getElementById("editnomeInput").value = item;
     } else if (index == 2) {
         document.getElementById("editdataresInput").value = item;
@@ -35,6 +37,19 @@ function get_array_values(item, index){
     else {}
  
 }
+
+async function save_edit_js(){
+if ($("#editresform").valid()) {
+    const nomeedit = $('#editnomeInput').val();
+    const dataresedit = $('#editdataresInput').val();
+    const liquidoresedit = $('#editliquidoresInput').val();
+    const carteiraresedit = $('#editcarteiraresInput').val();
+    const motivoedit = $('#editmotivoInput').val();
+    const editid = $('#editid').val();
+    const result = await eel.btn_saveeditres(nomeedit, dataresedit, liquidoresedit, carteiraresedit, motivoedit, editid)();
+    location.reload();
+}
+};
 
 function showRes(item, index){
     var get_table = document.getElementById("rescisao");

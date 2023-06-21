@@ -223,6 +223,7 @@
                                         </tbody>
                                     </table>
                                 </div>
+
                                 <!-- addadm Modal -->
                                 <div class="modal fade" id="addresModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
@@ -235,6 +236,7 @@
                                                 </button>
                                             </div>
                                             <form id="formres" action="#">
+                                                <input type="hidden" name="editid" id="editid">
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label for="nomeInput">Nome</label>
@@ -279,7 +281,7 @@
                                                     <span aria-hidden="true">×</span>
                                                 </button>
                                             </div>
-                                            <form id="formres" action="#">
+                                            <form id="editresform" action="#">
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label for="nomeInput">Nome</label>
@@ -304,7 +306,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-secondary required" type="button" data-dismiss="modal">Cancelar</button>
-                                                    <button type="submit" class="btn btn-primary" onclick="save_res_js();" id="save_return">Salvar</button>
+                                                    <button type="submit" class="btn btn-primary" onclick="save_edit_js();" id="save_return">Salvar</button>
                                                 </div>
                                             </form>
                                         </div>

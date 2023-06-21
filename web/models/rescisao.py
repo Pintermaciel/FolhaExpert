@@ -51,3 +51,23 @@ def show_selectedRescisao(id):
         print(Error)
         msg = "falhou"
         return msg
+    
+def update_res(nomeedit, dataresedit, liquidoresedit, carteiraresedit, motivoedit, editid):
+    try:
+        connect = sqlite3.connect("web/databases/storage.db")
+        cursor = connect.cursor()
+        print("Conexão com o banco de dados estabelecida com sucesso!")
+
+        if nomeedit != "" and dataresedit != "" and liquidoresedit != "" and carteiraresedit != "" and motivoedit != "":
+            cursor.execute("UPDATE rescisao SET nome =?, datares =?, liquidores =?, carteirares =?, motivo =? WHERE id =?", (nomeedit, dataresedit, liquidoresedit, carteiraresedit, motivoedit, editid))
+            connect.commit()
+            connect.close()
+            msg = "sucess"
+            return msg
+        else:
+            msg = "failure"
+            return msg
+    except Exception as Error:
+        print(Error)
+        msg = "falhou"
+        return msg 
