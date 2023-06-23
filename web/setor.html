@@ -239,6 +239,7 @@
                                 </button>
                             </div>
                             <form id="formsetor" action="#">
+                                <input type="hidden" name="editid" id="editid">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="empresaInput">Empresa</label>
@@ -264,6 +265,44 @@
                             </form>
                         </div>
                     </div>
+                    </div>
+
+                    <!-- editadm Modal -->
+                    <div class="modal fade" id="editsetormodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Editar Setor</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <form id="editsetorform" action="#">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="editempresaInput">Empresa</label>
+                                            <input type="text" class="form-control" required id="editempresaInput" placeholder="Digite a Empresa">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="editsetorInput">Setor</label>
+                                            <input type="text" class="form-control" required id="editsetorInput" placeholder="Digite o Setor">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="editfuncaoInput">Função</label>
+                                            <input type="text" class="form-control" required id="editfuncaoInput" placeholder="Digite a Função">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="editliderInput">Lider</label>
+                                            <input type="text" class="form-control" required id="editliderInput" placeholder="Digite o Lider">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary" onclick="save_edit_js();" id="save_returnadm">Salvar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- /.container-fluid -->

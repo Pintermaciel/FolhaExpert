@@ -1,7 +1,7 @@
 import sqlite3
 import traceback
 
-def show_all_records_adm():
+def showallrecordsadm():
     """
     Retorna uma lista com todos os registros de admissão do banco de dados.
 
@@ -21,7 +21,7 @@ def show_all_records_adm():
         msg = "Erro"
         return msg
 
-def save_new_adm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm):
+def save_newadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm):
     """
     Insere um novo registro de admissão no banco de dados.
 
@@ -57,7 +57,7 @@ def save_new_adm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm):
         msg = "falha"
         return msg
 
-def show_selected_admissao(id):
+def show_selectedAdmissao(id):
     """
     Retorna um registro de admissão específico com base no ID fornecido.
 

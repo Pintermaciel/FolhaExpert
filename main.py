@@ -1,6 +1,6 @@
 import eel
 import pyautogui
-from web.models.setor import showallrecords, save_newsetor
+from web.models.setor import showallrecords, save_newsetor, show_selectedSetor, update_setor
 from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm
 from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res
 
@@ -30,6 +30,32 @@ def btn_save(empresa, setor, funcao, lider):
     print("Chamando a função btn_save")
     msg = save_newsetor(empresa, setor, funcao, lider)
     eel.save_returnsetor(str(msg))
+    
+@eel.expose
+def get_setor(id):
+    """
+    Função que busca um registro de Admissão pelo ID e exibe os dados na interface de edição.
+
+    Args:
+        id (int): ID do registro de Admissão.
+    """
+    selected_adm = show_selectedSetor(id)
+    eel.action_editsetor(selected_adm)
+
+@eel.expose
+def save_editsetor(empresa, setor, funcao, lider, id):
+    """
+    Atualiza um registro de admissão existente no banco de dados.
+
+    Args:
+        empresa (str): Novo nome da empresa.
+        setor (str): Novo setor do funcionário.
+        funcao (str): Nova função do funcionário.
+        lider (str): Novo líder do setor.
+        id (int): ID do registro de admissão a ser atualizado.
+    """
+    print("Chamando a função save_editsetor")
+    msg = update_setor(empresa, setor, funcao, lider, id)
 
 
 """ADMISSAO"""

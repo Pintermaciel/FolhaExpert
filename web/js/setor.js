@@ -90,3 +90,64 @@ function save_returnsetor(status) {
         $('#return_register').text('Erro ao cadastrar, contate o administrador.')
     }
 };
+
+// Editar Admissão
+async function btn_edit(id){
+    // Função chamada quando o botão de edição de um registro de admissão é clicado
+    // Aqui você pode realizar as ações necessárias para obter os dados do registro a ser editado e enviar ao Python
+    await eel.get_setor(id)();
+    $('#editsetormodal').modal("show");
+}
+
+eel.expose(action_editsetor)
+function action_editsetor(editsetor){
+    // Função chamada quando os dados do registro a ser editado são recebidos do Python
+    // Aqui você pode realizar as ações necessárias para exibir os dados na modal de edição
+    editsetor.forEach(get_array_values);
+}
+
+function get_array_values(item, index){
+    // Função para preencher os campos da modal de edição com os dados do registro
+    if (index == 0) {
+        document.getElementById("editid").value = item;
+    } else if (index == 1) {
+        document.getElementById("editempresaInput").value = item;
+    } else if (index == 2) {
+        document.getElementById("editsetorInput").value = item;
+    } else if (index == 3) {
+        document.getElementById("editfuncaoInput").value = item;
+    } else if (index == 4) {
+        document.getElementById("editliderInput").value = item;
+    } 
+    else {}
+}
+
+// Salvar Edição de Admissão
+async function save_edit_js(){
+    // Função chamada quando o botão de salvar edição de admissão é clicado
+    // Aqui você pode realizar as ações necessárias para obter os valores dos campos editados e enviar ao Python para salvar
+    if ($("#editsetorform").valid()) {
+        const id = $('#editid').val();
+        const empresa = $('#editempresaInput').val();
+        const setor = $('#editsetorInput').val();
+        const funcao = $('#editfuncaoInput').val();
+        const lider = $('#editliderInput').val();
+        const result = await eel.save_editsetor(empresa, setor, funcao, lider, id)();
+        location.reload();
+    }
+}
+
+eel.expose(save_returneditadm);
+function save_returneditadm(status) {
+    // Função chamada quando o retorno do Python para o salvamento de edição de admissão é recebido
+    // Aqui você pode realizar as ações necessárias para exibir uma mensagem de retorno na página
+    if (status == "sucess") {
+        $('#return_editadm').text('Edição concluída com sucesso.');
+    }
+    if (status == "failure") {
+        $('#return_editadm').text('Erro ao editar, verifique os campos em branco.')
+    }
+    if (status == "falhou") {
+        $('#return_editadm').text('Erro ao editar, contate o administrador.')
+    }
+};
