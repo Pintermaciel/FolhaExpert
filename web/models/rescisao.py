@@ -13,8 +13,6 @@ def showallrecordsres():
         cursor.execute("SELECT * FROM rescisao")
         rescisao = []
         for item in cursor.fetchall():
-            test = item[1]
-            print(test)
             rescisao.append(item)
         return rescisao
     except Exception as error:

@@ -1,7 +1,7 @@
 import eel
 import pyautogui
 from web.models.setor import showallrecords, save_newsetor
-from web.models.admissao import showallrecordsadm, save_newadm
+from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm
 from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res
 
 eel.init('web')
@@ -60,6 +60,36 @@ def btn_saveadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm):
     print("Chamando a função btn_save")
     msg = save_newadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm)
     eel.save_returnadm(str(msg))
+
+@eel.expose
+def get_admissao(id):
+    """
+    Função que busca um registro de Admissão pelo ID e exibe os dados na interface de edição.
+
+    Args:
+        id (int): ID do registro de Admissão.
+    """
+    selected_adm = show_selectedAdmissao(id)
+    eel.action_editadm(selected_adm)
+
+@eel.expose
+def save_editadm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid):
+    """
+    Função que atualiza um registro de Admissão no banco de dados.
+
+    Args:
+        nomeedit (str): Novo nome do funcionário.
+        cpfedit (str): Novo CPF do funcionário.
+        empresaedit (str): Nova empresa.
+        setoredit (str): Novo setor.
+        cargoedit (str): Novo cargo.
+        salariofedit (float): Novo salário fixo.
+        salarioedit (float): Novo salário.
+        dataadmedit (str): Nova data de admissão.
+        editid (int): ID do registro de Admissão a ser atualizado.
+    """
+    print("Chamando a função btn_saveeditadm")
+    msg = update_adm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid)
 
 
 """RESCISAO"""
