@@ -10,7 +10,7 @@ def showallrecordsres():
     try:
         connect = sqlite3.connect(r"web/databases/storage.db")
         cursor = connect.cursor()
-        cursor.execute("SELECT * FROM rescisao")
+        cursor.execute("SELECT * FROM rescisao ORDER BY id DESC")
         rescisao = []
         for item in cursor.fetchall():
             rescisao.append(item)

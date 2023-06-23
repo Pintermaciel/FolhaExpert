@@ -11,7 +11,7 @@ def showallrecordsadm():
     try:
         connect = sqlite3.connect(r"web/databases/storage.db")
         cursor = connect.cursor()
-        cursor.execute("SELECT * FROM admissao")
+        cursor.execute("SELECT * FROM admissao ORDER BY id DESC")
         admissao = []
         for item in cursor.fetchall():
             admissao.append(item)

@@ -5,11 +5,9 @@ def showallrecords():
     try:
         connect = sqlite3.connect(r"web/databases/storage.db")
         cursor = connect.cursor()
-        cursor.execute("SELECT * FROM setor")
+        cursor.execute("SELECT * FROM setor ORDER BY id DESC")
         setor = []
         for item in cursor.fetchall():
-            test = item[1]
-            print(test)
             setor.append(item)
         return setor
     except Exception as error:
@@ -80,7 +78,6 @@ def update_setor(empresa, setor, funcao, lider, id):
         connect = sqlite3.connect("web/databases/storage.db")
         cursor = connect.cursor()
         print("Conexão com o banco de dados estabelecida com sucesso! update_setor")
-        print(empresa, setor, funcao, lider, id)
 
         if empresa != "" and setor != "" and funcao != "" and lider != "":
             query = "UPDATE setor SET empresa=?, setor=?, funcao=?, lider=? WHERE id=?"
@@ -103,4 +100,3 @@ def update_setor(empresa, setor, funcao, lider, id):
         msg = "falha"
         print(msg)
         return msg
-
