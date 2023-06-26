@@ -52,6 +52,7 @@ function showAdm(item, index){
     btnDelete.classList.add("btn", "btn-danger", "btn-circle");
     btnDelete.setAttribute("type", "button");
     btnDelete.setAttribute("data-ripple-color", "dark");
+    btnDelete.setAttribute("onclick", "btn_delete('" + id + "')");
 
     infoIcon.classList.add("fas", "fa-info-circle");
     deleteIcon.classList.add("fas", "fa-trash");
@@ -185,3 +186,21 @@ function save_returneditadm(status) {
         $('#return_editadm').text('Erro ao editar, contate o administrador.')
     }
 };
+
+//Deletar
+
+let deleteAdmissaoId; // Variável global para armazenar o ID do admissao a ser excluído
+
+async function btn_delete(id) {
+    $('#deleteadmissaomodal').modal("show"); // Abre o modal de confirmação de exclusão
+    deleteAdmissaoId = await eel.get_delete_admissao(id)(); // Obtém o ID do admissao a ser excluído usando a função exposta do lado do servidor
+}
+
+async function btn_submitdelete() {
+    const response = await eel.delete_admissao(deleteAdmissaoId)(); // Exclui o admissao usando o ID armazenado na variável deleteAdmissaoId
+    if (response === "success") {
+        location.reload(); // Recarrega a página após a exclusão bem-sucedida
+    } else {
+        console.log("Erro ao excluir o setor."); // Exibe uma mensagem de erro caso ocorra algum problema na exclusão
+    }
+}

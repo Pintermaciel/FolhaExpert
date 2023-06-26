@@ -1,7 +1,7 @@
 import eel
 import pyautogui
 from web.models.setor import showallrecords, save_newsetor, show_selectedSetor, update_setor, show_selectedeleteSetor, show_deleteSetor
-from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm
+from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm, show_selectedeleteAdmissao, show_deleteAdmissao
 from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res
 
 eel.init('web')
@@ -144,6 +144,35 @@ def save_editadm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofe
     """
     print("Chamando a função btn_saveeditadm")
     msg = update_adm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid)
+    
+@eel.expose
+def get_delete_admissao(id):
+    """
+    Função exposta para obter o admissao a ser excluído com base no ID fornecido.
+
+    Args:
+        id: O ID do admissao a ser excluído.
+
+    Returns:
+        int or None: O ID do admissao a ser excluído ou None se o admissao não existir.
+    """
+    select_del_admissao = show_selectedeleteAdmissao(id)
+    print(id)
+    return select_del_admissao
+
+@eel.expose
+def delete_admissao(id):
+    """
+    Função exposta para excluir um admissao com base no ID fornecido.
+
+    Args:
+        id: O ID do admissao a ser excluído.
+
+    Returns:
+        str: Uma mensagem indicando o resultado da exclusão ("success" em caso de sucesso, "Error" em caso de erro).
+    """
+    result = show_deleteAdmissao(id)
+    return result
 
 
 """RESCISAO"""

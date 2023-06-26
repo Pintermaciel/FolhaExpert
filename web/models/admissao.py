@@ -127,3 +127,50 @@ def update_adm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedi
         msg = "falha"
         print(msg)
         return msg
+    
+def show_deleteAdmissao(id):
+    """
+    Função que realiza a exclusão de um admissao no banco de dados.
+
+    Args:
+        id: O ID do admissao a ser excluído.
+
+    Returns:
+        str: Uma mensagem indicando o resultado da exclusão ("success" em caso de sucesso, "Error" em caso de erro).
+    """
+    try:
+        connect = sqlite3.connect("web/databases/storage.db")
+        cursor = connect.cursor()
+        cursor.execute("DELETE FROM admissao WHERE id =?", (id,))
+        connect.commit()
+        connect.close()
+        msg = "success"
+        return msg
+    except Exception as error:
+        print(error)
+        msg = "Error"
+        return msg
+
+def show_selectedeleteAdmissao(id):
+    """
+    Função que retorna o ID de um admissao com base no ID fornecido.
+
+    Args:
+        id: O ID do admissao a ser selecionado.
+
+    Returns:
+        int or None: O ID do admissao encontrado ou None se o admissao não existir.
+    """
+    try:
+        connect = sqlite3.connect("web/databases/storage.db")
+        cursor = connect.cursor()
+        print("Conexão com o banco de dados estabelecida com sucesso! show_selectedeleteAdmissao")
+        cursor.execute("SELECT * FROM admissao WHERE id =?", (id,))
+        selected_setor = cursor.fetchone()
+        if selected_setor:
+            return selected_setor[0]  # Retornar apenas o ID
+        else:
+            return None
+    except Exception as error:
+        print(error)
+        return None
