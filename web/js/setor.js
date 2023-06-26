@@ -42,6 +42,7 @@ function showSetor(item, index){
     btnDelete.classList.add("btn", "btn-danger", "btn-circle");
     btnDelete.setAttribute("type", "button");
     btnDelete.setAttribute("data-ripple-color", "dark");
+    btnDelete.setAttribute("onclick", "btn_delete('" + id + "')");
 
     infoIcon.classList.add("fas", "fa-info-circle");
     deleteIcon.classList.add("fas", "fa-trash");
@@ -151,3 +152,22 @@ function save_returneditadm(status) {
         $('#return_editadm').text('Erro ao editar, contate o administrador.')
     }
 };
+
+
+//Deletar
+
+let deleteSetorId; // Variável global para armazenar o ID do setor a ser excluído
+
+async function btn_delete(id) {
+    $('#deletesetormodal').modal("show"); // Abre o modal de confirmação de exclusão
+    deleteSetorId = await eel.get_delete_setor(id)(); // Obtém o ID do setor a ser excluído usando a função exposta do lado do servidor
+}
+
+async function btn_submitdelete() {
+    const response = await eel.delete_setor(deleteSetorId)(); // Exclui o setor usando o ID armazenado na variável deleteSetorId
+    if (response === "success") {
+        location.reload(); // Recarrega a página após a exclusão bem-sucedida
+    } else {
+        console.log("Erro ao excluir o setor."); // Exibe uma mensagem de erro caso ocorra algum problema na exclusão
+    }
+}

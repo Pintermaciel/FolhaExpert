@@ -1,6 +1,6 @@
 import eel
 import pyautogui
-from web.models.setor import showallrecords, save_newsetor, show_selectedSetor, update_setor
+from web.models.setor import showallrecords, save_newsetor, show_selectedSetor, update_setor, show_selectedeleteSetor, show_deleteSetor
 from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm
 from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res
 
@@ -57,6 +57,34 @@ def save_editsetor(empresa, setor, funcao, lider, id):
     print("Chamando a função save_editsetor")
     msg = update_setor(empresa, setor, funcao, lider, id)
 
+@eel.expose
+def get_delete_setor(id):
+    """
+    Função exposta para obter o setor a ser excluído com base no ID fornecido.
+
+    Args:
+        id: O ID do setor a ser excluído.
+
+    Returns:
+        int or None: O ID do setor a ser excluído ou None se o setor não existir.
+    """
+    select_del_setor = show_selectedeleteSetor(id)
+    print(id)
+    return select_del_setor
+
+@eel.expose
+def delete_setor(id):
+    """
+    Função exposta para excluir um setor com base no ID fornecido.
+
+    Args:
+        id: O ID do setor a ser excluído.
+
+    Returns:
+        str: Uma mensagem indicando o resultado da exclusão ("success" em caso de sucesso, "Error" em caso de erro).
+    """
+    result = show_deleteSetor(id)
+    return result
 
 """ADMISSAO"""
 
