@@ -2,7 +2,7 @@ import eel
 import pyautogui
 from web.models.setor import showallrecords, save_newsetor, show_selectedSetor, update_setor, show_selectedeleteSetor, show_deleteSetor
 from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm, show_selectedeleteAdmissao, show_deleteAdmissao, show_selectedEmpAdmissao, show_selectedSetorAdmissao, show_selectedCargoAdmissao
-from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res, show_selectedeleteRescisao, show_deleteRescisao
+from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res, show_selectedeleteRescisao, show_deleteRescisao, show_selectedNomeRescisao
 
 eel.init('web')
 
@@ -128,21 +128,37 @@ def get_admissao(id):
     
 @eel.expose
 def get_emp_admissao():
+    """
+    Obtém a empresa de admissão selecionada e envia as opções para o frontend.
+    """
     selected_adm = show_selectedEmpAdmissao()
     print(selected_adm)
     eel.empresaOptions(selected_adm)
-    
+
 @eel.expose
 def get_setor_admissao(empresa):
+    """
+    Obtém a empresa selecionada e retorna as opções de setor relacionadas para o frontend.
+    
+    Args:
+        empresa: A empresa selecionada.
+    """
     selected_setor = show_selectedSetorAdmissao(empresa)
     print(selected_setor)
     eel.setorOptions(selected_setor)
-    
+
 @eel.expose
 def get_cargo_admissao(setor):
+    """
+    Obtém o setor selecionado e retorna as opções de cargo relacionadas para o frontend.
+    
+    Args:
+        setor: O setor selecionado.
+    """
     selected_cargo = show_selectedCargoAdmissao(setor)
     print(selected_cargo)
     eel.cargoOptions(selected_cargo)
+
 
 @eel.expose
 def save_editadm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid):
@@ -274,6 +290,16 @@ def delete_rescisao(id):
     """
     result = show_deleteRescisao(id)
     return result
+
+@eel.expose
+def get_nome_rescisao():
+    """
+    Obtém o nome de rescisão selecionado e envia as opções para o frontend.
+    """
+    selected_adm = show_selectedNomeRescisao()
+    print(selected_adm)
+    eel.nomeOptions(selected_adm)
+
 
 
 """START"""

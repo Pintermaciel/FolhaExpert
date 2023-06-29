@@ -78,6 +78,25 @@ def show_selectedRescisao(id):
         msg = "falhou"
         return msg
     
+def show_selectedNomeRescisao():
+    """
+    Retorna uma lista dos nomes distintos presentes na tabela "admissao".
+    
+    Returns:
+        Uma lista contendo os nomes distintos encontrados na tabela.
+    """
+    try:
+        connect = sqlite3.connect("web/databases/storage.db")
+        cursor = connect.cursor()
+        print("Conexão com o banco de dados estabelecida com sucesso! show_selectedNomeRescisao")
+        cursor.execute("SELECT DISTINCT nome FROM admissao")
+        editadmissao = [item[0] for item in cursor.fetchall()]  # Obter todos os nomes retornados pela consulta
+        return editadmissao
+    except Exception as error:
+        print(error)
+        msg = "falha"
+        return msg
+    
 def update_res(nomeedit, dataresedit, liquidoresedit, carteiraresedit, motivoedit, editid):
     """
     Função que atualiza um registro de Rescisão no banco de dados.

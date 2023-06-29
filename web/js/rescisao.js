@@ -1,8 +1,10 @@
 $(document).ready(function(){
     eel.fetchalldatares();
 
-    $("#btn_addres").on("click", function(){
+    $("#btn_addres").on("click", async function(){ // Adicione a palavra-chave 'async' aqui
         $("#addresModal").modal("show");
+
+        await eel.get_nome_rescisao()(); // Aguarde a função assíncrona corretamente
     });
 });
 
@@ -13,6 +15,17 @@ function action_outres(rescisao){
     rescisao.forEach(showRes);
 }
 
+// Função para preencher o campo de seleção com as opções
+eel.expose(nomeOptions);
+function nomeOptions(selected_nome) {
+  var selectElement = document.getElementById("nomeInput");
+
+  selected_nome.forEach(function (item) {
+    var option = document.createElement("option");
+    option.text = item;
+    selectElement.add(option);
+  });
+}
 
 // Editar Rescisão
 async function btn_edit(id){

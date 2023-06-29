@@ -84,6 +84,12 @@ def show_selectedAdmissao(id):
 
 
 def show_selectedEmpAdmissao():
+    """
+    Retorna uma lista das empresas distintas presentes na tabela "setor".
+    
+    Returns:
+        Uma lista contendo as empresas distintas.
+    """
     try:
         connect = sqlite3.connect("web/databases/storage.db")
         cursor = connect.cursor()
@@ -95,8 +101,17 @@ def show_selectedEmpAdmissao():
         print(error)
         msg = "falha"
         return msg
-    
+
 def show_selectedSetorAdmissao(empresa):
+    """
+    Retorna uma lista dos setores distintos relacionados a uma determinada empresa.
+    
+    Args:
+        empresa: A empresa para a qual se deseja obter os setores relacionados.
+        
+    Returns:
+        Uma lista contendo os setores distintos relacionados à empresa.
+    """
     try:
         connect = sqlite3.connect("web/databases/storage.db")
         cursor = connect.cursor()
@@ -110,6 +125,15 @@ def show_selectedSetorAdmissao(empresa):
         return msg
 
 def show_selectedCargoAdmissao(setor):
+    """
+    Retorna uma lista das funções/cargos distintos relacionados a um determinado setor.
+    
+    Args:
+        setor: O setor para o qual se deseja obter as funções/cargos relacionados.
+        
+    Returns:
+        Uma lista contendo as funções/cargos distintos relacionados ao setor.
+    """
     try:
         connect = sqlite3.connect("web/databases/storage.db")
         cursor = connect.cursor()
@@ -121,6 +145,7 @@ def show_selectedCargoAdmissao(setor):
         print(error)
         msg = "falha"
         return msg
+
 
 def update_adm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid):
     """
