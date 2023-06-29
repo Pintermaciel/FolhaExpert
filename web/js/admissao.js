@@ -13,6 +13,22 @@ function action_outadm(adm){
     adm.forEach(showAdm)
 }
 
+// Função para preencher o campo de seleção com as opções
+function populateOptions(options) {
+    var selectElement = document.getElementById("empresaInput");
+  
+    options.forEach(function(item) {
+        var option = document.createElement("option");
+        option.text = item;
+        selectElement.add(option);
+    });
+}
+
+// Exemplo de uso da função populateOptions
+var empresas = ["Empresa A", "Empresa B", "Empresa C"];
+populateOptions(empresas);
+
+
 function showAdm(item, index){
     // Função para exibir os dados de um registro de admissão na tabela da página
     var get_table = document.getElementById("adm");
