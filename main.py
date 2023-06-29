@@ -159,7 +159,6 @@ def get_cargo_admissao(setor):
     print(selected_cargo)
     eel.cargoOptions(selected_cargo)
 
-
 @eel.expose
 def save_editadm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid):
     """
