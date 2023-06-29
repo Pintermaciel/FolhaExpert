@@ -154,15 +154,15 @@ function save_returnres(status) {
 
 //Deletar
 
-let deleteAdmissaoId; // Variável global para armazenar o ID do admissao a ser excluído
+let deleteRescisaoId; // Variável global para armazenar o ID do recisao a ser excluído
 
 async function btn_delete(id) {
-    $('#deleteadmissaomodal').modal("show"); // Abre o modal de confirmação de exclusão
-    deleteAdmissaoId = await eel.get_delete_admissao(id)(); // Obtém o ID do admissao a ser excluído usando a função exposta do lado do servidor
+    $('#deleterecisaomodal').modal("show"); // Abre o modal de confirmação de exclusão
+    deleteRescisaoId = await eel.get_delete_rescisao(id)(); // Obtém o ID do recisao a ser excluído usando a função exposta do lado do servidor
 }
 
 async function btn_submitdelete() {
-    const response = await eel.delete_admissao(deleteAdmissaoId)(); // Exclui o admissao usando o ID armazenado na variável deleteAdmissaoId
+    const response = await eel.delete_rescisao(deleteRescisaoId)(); // Exclui o rescisao usando o ID armazenado na variável deleteRescisaoId
     if (response === "success") {
         location.reload(); // Recarrega a página após a exclusão bem-sucedida
     } else {

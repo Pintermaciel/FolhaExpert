@@ -2,7 +2,7 @@ import eel
 import pyautogui
 from web.models.setor import showallrecords, save_newsetor, show_selectedSetor, update_setor, show_selectedeleteSetor, show_deleteSetor
 from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm, show_selectedeleteAdmissao, show_deleteAdmissao
-from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res
+from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res, show_selectedeleteRescisao, show_deleteRescisao
 
 eel.init('web')
 
@@ -227,6 +227,35 @@ def btn_saveeditres(nomeedit, dataresedit, liquidoresedit, carteiraresedit, moti
     """
     print("Chamando a função btn_saveeditres")
     msg = update_res(nomeedit, dataresedit, liquidoresedit, carteiraresedit, motivoedit, editid)
+
+@eel.expose
+def get_delete_rescisao(id):
+    """
+    Função exposta para obter a rescisao a ser excluído com base no ID fornecido.
+
+    Args:
+        id: O ID do rescisao a ser excluído.
+
+    Returns:
+        int or None: O ID do rescisao a ser excluído ou None se o rescisao não existir.
+    """
+    select_del_rescisao = show_selectedeleteRescisao(id)
+    print(id)
+    return select_del_rescisao
+
+@eel.expose
+def delete_rescisao(id):
+    """
+    Função exposta para excluir um recisao com base no ID fornecido.
+
+    Args:
+        id: O ID do rescisao a ser excluído.
+
+    Returns:
+        str: Uma mensagem indicando o resultado da exclusão ("success" em caso de sucesso, "Error" em caso de erro).
+    """
+    result = show_deleteRescisao(id)
+    return result
 
 
 """START"""
