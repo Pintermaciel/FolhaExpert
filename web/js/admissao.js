@@ -1,10 +1,34 @@
 $(document).ready(function(){
-    eel.fetchalldataadm()
+    eel.fetchalldataadm();
 
-    $("#btn_addadm").on("click", function(){
-        $("#addadmModal").modal("show");
+    // Adicionar um manipulador de evento para a mudança no campo de seleção da empresa
+    $("#empresaInput").on("change", async function(){
+        var empresaSelecionada = $(this).val(); // Obter o valor selecionado do campo empresaInput
+        await eel.get_setor_admissao(empresaSelecionada)();
+
+        var setorSelecionado = $('#setorInput').val(); // Obter o valor selecionado do campo setorInput
+        await eel.get_cargo_admissao(setorSelecionado)();
     });
-})
+
+    // Adicionar um manipulador de evento para a mudança no campo de seleção de setor
+    $("#setorInput").on("change", async function(){
+        var setorSelecionado = $(this).val(); // Obter o valor selecionado do campo setorInput
+        await eel.get_cargo_admissao(setorSelecionado)();
+    });
+
+    $("#btn_addadm").on("click", async function(){
+        $("#addadmModal").modal("show");
+        await eel.get_emp_admissao()();
+
+        var empresaSelecionada = $('#empresaInput').val(); // Obter o valor selecionado do campo empresaInput
+        await eel.get_setor_admissao(empresaSelecionada)();
+
+        var setorSelecionado = $('#setorInput').val(); // Obter o valor selecionado do campo setorInput
+        await eel.get_cargo_admissao(setorSelecionado)();
+
+        // Outras ações que dependem de get_emp_admissao()
+    });
+});
 
 eel.expose(action_outadm)
 function action_outadm(adm){
@@ -14,20 +38,46 @@ function action_outadm(adm){
 }
 
 // Função para preencher o campo de seleção com as opções
-function populateOptions(options) {
-    var selectElement = document.getElementById("empresaInput");
-  
-    options.forEach(function(item) {
-        var option = document.createElement("option");
-        option.text = item;
-        selectElement.add(option);
-    });
+eel.expose(empresaOptions);
+function empresaOptions(selected_adm) {
+  var selectElement = document.getElementById("empresaInput");
+
+  selected_adm.forEach(function (item) {
+    var option = document.createElement("option");
+    option.text = item;
+    selectElement.add(option);
+  });
 }
 
-// Exemplo de uso da função populateOptions
-var empresas = ["Empresa A", "Empresa B", "Empresa C"];
-populateOptions(empresas);
+// Função para preencher o campo de seleção com as opções
+eel.expose(setorOptions);
+function setorOptions(selected_setor) {
+  var selectElement = document.getElementById("setorInput");
 
+  // Limpar as opções anteriores
+  selectElement.innerHTML = "";
+
+  selected_setor.forEach(function (item) {
+    var option = document.createElement("option");
+    option.text = item;
+    selectElement.add(option);
+  });
+}
+
+// Função para preencher o campo de seleção com as opções
+eel.expose(cargoOptions);
+function cargoOptions(selected_cargo) {
+  var selectElement = document.getElementById("cargoInput");
+
+  // Limpar as opções anteriores
+  selectElement.innerHTML = "";
+
+  selected_cargo.forEach(function (item) {
+    var option = document.createElement("option");
+    option.text = item;
+    selectElement.add(option);
+  });
+}
 
 function showAdm(item, index){
     // Função para exibir os dados de um registro de admissão na tabela da página

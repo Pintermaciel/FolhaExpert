@@ -82,6 +82,46 @@ def show_selectedAdmissao(id):
         msg = "falha"
         return msg
 
+
+def show_selectedEmpAdmissao():
+    try:
+        connect = sqlite3.connect("web/databases/storage.db")
+        cursor = connect.cursor()
+        print("Conexão com o banco de dados estabelecida com sucesso! show_selectedEmpAdmissao")
+        cursor.execute("SELECT DISTINCT empresa FROM setor")
+        editadmissao = [item[0] for item in cursor.fetchall()]  # Obter todas as empresas retornadas pela consulta
+        return editadmissao
+    except Exception as error:
+        print(error)
+        msg = "falha"
+        return msg
+    
+def show_selectedSetorAdmissao(empresa):
+    try:
+        connect = sqlite3.connect("web/databases/storage.db")
+        cursor = connect.cursor()
+        print("Conexão com o banco de dados estabelecida com sucesso! show_selectedSetorAdmissao")
+        cursor.execute("SELECT DISTINCT setor FROM setor where empresa = ?", (empresa,))
+        editadmissao = [item[0] for item in cursor.fetchall()]  # Obter todas as empresas retornadas pela consulta
+        return editadmissao
+    except Exception as error:
+        print(error)
+        msg = "falha"
+        return msg
+
+def show_selectedCargoAdmissao(setor):
+    try:
+        connect = sqlite3.connect("web/databases/storage.db")
+        cursor = connect.cursor()
+        print("Conexão com o banco de dados estabelecida com sucesso! show_selectedCargoAdmissao")
+        cursor.execute("SELECT DISTINCT funcao FROM setor where setor = ?", (setor,))
+        editadmissao = [item[0] for item in cursor.fetchall()]  # Obter todas as setor retornadas pela consulta
+        return editadmissao
+    except Exception as error:
+        print(error)
+        msg = "falha"
+        return msg
+
 def update_adm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid):
     """
     Atualiza um registro de admissão existente no banco de dados.
