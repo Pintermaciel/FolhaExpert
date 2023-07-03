@@ -2,6 +2,16 @@ $(document).ready(function(){
     eel.fetchalldatacompetencia();
 });
 
+// Nova competencia
+async function save_comp_js(){
+    // Função chamada quando o botão de salvar nova admissão é clicado
+    // Aqui você pode realizar as ações necessárias para obter os valores dos campos de novo registro e enviar ao Python para salvar
+        const comp = $('#compInput').val();
+        const result = await eel.btn_savecomp(comp)();
+        alert("cadastrado competência: " + comp);
+        location.reload();
+};
+
 eel.expose(action_outCompetencia)
 function action_outCompetencia(competencia){
     // Função chamada quando os dados de competencia são recebidos do Python

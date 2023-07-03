@@ -3,7 +3,7 @@ import pyautogui
 from web.models.setor import showallrecords, save_newsetor, show_selectedSetor, update_setor, show_selectedeleteSetor, show_deleteSetor
 from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm, show_selectedeleteAdmissao, show_deleteAdmissao, show_selectedEmpAdmissao, show_selectedSetorAdmissao, show_selectedCargoAdmissao
 from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res, show_selectedeleteRescisao, show_deleteRescisao, show_selectedNomeRescisao
-from web.models.competencia import showallrecordscompetencia
+from web.models.competencia import showallrecordscompetencia, save_newcomp
 
 
 eel.init('web')
@@ -313,8 +313,8 @@ def fetchalldatacompetencia():
     print(select_reg)
     eel.action_outCompetencia(select_reg)
 
-'''@eel.expose
-def btn_saveadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm):
+@eel.expose
+def btn_savecomp(comp):
     """
     Função que salva um novo registro de Admissão no banco de dados.
 
@@ -329,9 +329,8 @@ def btn_saveadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm):
         dataadm (str): Data de admissão.
     """
     print("Chamando a função btn_save")
-    msg = save_newadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm)
-    eel.save_returnadm(str(msg))
-
+    msg = save_newcomp(comp)
+'''
 @eel.expose
 def get_admissao(id):
     """
