@@ -39,3 +39,28 @@ def save_newcomp(comp):
         print(error)
         msg = "falha"
         return msg
+
+def show_selectedCompetencia(id):
+    """
+    Retorna um registro de admissão específico com base no ID fornecido.
+
+    Args:
+        id (int): ID do registro de admissão.
+
+    Returns:
+        list: Lista contendo os detalhes do registro de admissão.
+    """
+    try:
+        connect = sqlite3.connect("web/databases/storage.db")
+        cursor = connect.cursor()
+        print("Conexão com o banco de dados estabelecida com sucesso! show_selectedCompetencia")
+        cursor.execute("SELECT * FROM competencia WHERE id =?", (id,))
+        editadmissao = []
+        for item in cursor.fetchone():
+            editadmissao.append(item)
+        return editadmissao
+
+    except Exception as error:
+        print(error)
+        msg = "falha"
+        return msg

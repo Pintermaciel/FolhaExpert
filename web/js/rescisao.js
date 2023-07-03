@@ -105,6 +105,7 @@ function showRes(item, index){
     btnInfo.setAttribute("type", "button");
     btnInfo.setAttribute("data-ripple-color", "dark");
     btnInfo.setAttribute("onclick", "btn_edit('" + id + "')");
+    btnInfo.setAttribute("style", "margin:5px");
 
     btnDelete.classList.add("btn", "btn-danger", "btn-circle");
     btnDelete.setAttribute("type", "button");

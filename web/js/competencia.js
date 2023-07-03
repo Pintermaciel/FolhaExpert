@@ -47,6 +47,7 @@ function showCompetencia(item, index){
     btnInfo.setAttribute("type", "button");
     btnInfo.setAttribute("data-ripple-color", "dark");
     btnInfo.setAttribute("onclick", "btn_edit('" + id + "')");
+    btnInfo.setAttribute("style", "margin:5px");
 
     btnDelete.classList.add("btn", "btn-danger", "btn-circle");
     btnDelete.setAttribute("type", "button");
@@ -69,4 +70,35 @@ function showCompetencia(item, index){
     tr.appendChild(td4);
     tr.appendChild(td5);
     get_table.appendChild(tr);
+}
+
+// Editar Admissão
+async function btn_edit(id){
+    // Função chamada quando o botão de edição de um registro de admissão é clicado
+    // Aqui você pode realizar as ações necessárias para obter os dados do registro a ser editado e enviar ao Python
+    await eel.get_competencia(id)();
+    $('#editadmmodal').modal("show");
+}
+
+eel.expose(action_editcomp)
+function action_editcomp(editcomp){
+    // Função chamada quando os dados do registro a ser editado são recebidos do Python
+    // Aqui você pode realizar as ações necessárias para exibir os dados na modal de edição
+    editcomp.forEach(get_array_values);
+}
+
+function get_array_values(item, index){
+    // Função para preencher os campos da modal de edição com os dados do registro
+    if (index == 0) {
+        document.getElementById("editid").value = item;
+    } else if (index == 1) {
+        document.getElementById("editnomeInput").innerText = item;
+    } else if (index == 2) {
+        document.getElementById("editsetorInput").innerText = item;
+    } else if (index == 3) {
+        document.getElementById("editfuncaoInput").innerText = item;
+    } else if (index == 4) {
+        document.getElementById("editcompetenciaInput").innerText = item;
+    }
+    else {}
 }

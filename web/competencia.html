@@ -196,12 +196,12 @@
                                             <div class=" py-1 text-right">
                                                 <input type="text" id="compInput" placeholder="Digite a Competência EX: 03/2023" class="input form-control form-control-xs" required/>
                                                 <br>
-                                                <button type="button" class="btn btn-info btn-icon-split" data-ripple-color="dark">
+                                                <!-- <button type="button" class="btn btn-info btn-icon-split" data-ripple-color="dark">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-info-circle"></i>
                                                     </span>
                                                     <span class="text">Pesquisar</span>
-                                                </button>
+                                                </button> -->
                                                 <button type="button" onclick="save_comp_js();" class="btn btn-success btn-icon-split" data-ripple-color="dark">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-check"></i>
@@ -210,6 +210,7 @@
                                                 </button>
                                             </div>
                                         </div>
+                                        
                                         
                                     </div>
                                 </div>
@@ -231,7 +232,61 @@
                                     </table>
                                 </div>
                             </div>
-
+                            
+                            <!-- editadm Modal -->
+                            <div class="modal fade" id="editadmmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Editar Competência</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <form id="editadmform" action="#">
+                                            <div class="modal-body">
+                                                <input type="hidden" name="editid" id="editid">
+                                                <div class="form-group">
+                                                    <label for="editnomeInput">Nome</label>
+                                                    <p type="text" class="form-control" required id="editnomeInput"></p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editsetorInput">Setor</label>
+                                                    <p type="text" class="form-control" required id="editsetorInput"></p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editfuncaoInput">Função</label>
+                                                    <p type="text" class="form-control" required id="editfuncaoInput"></p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editcompetenciaInput">Competência</label>
+                                                    <p type="text" class="form-control" required id="editcompetenciaInput"></p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editcargoInput">Cargo</label>
+                                                    <input type="text" class="form-control" required id="editcargoInput" placeholder="Digite o Cargo">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editsalariofInput">Salário Fixo</label>
+                                                    <input type="text" class="form-control" required id="editsalariofInput" placeholder="Digite o Salário Fixo">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editsalarioInput">Salário</label>
+                                                    <input type="text" class="form-control" required id="editsalarioInput" placeholder="Digite o Salário">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editdataadmInput">Data de Admissão</label>
+                                                    <input type="text" class="form-control" required id="editdataadmInput" placeholder="Digite a Data de Admissão">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="btn btn-primary" onclick="save_edit_js();" id="save_returnadm">Salvar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

@@ -3,7 +3,7 @@ import pyautogui
 from web.models.setor import showallrecords, save_newsetor, show_selectedSetor, update_setor, show_selectedeleteSetor, show_deleteSetor
 from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm, show_selectedeleteAdmissao, show_deleteAdmissao, show_selectedEmpAdmissao, show_selectedSetorAdmissao, show_selectedCargoAdmissao
 from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res, show_selectedeleteRescisao, show_deleteRescisao, show_selectedNomeRescisao
-from web.models.competencia import showallrecordscompetencia, save_newcomp
+from web.models.competencia import showallrecordscompetencia, save_newcomp, show_selectedCompetencia
 
 
 eel.init('web')
@@ -330,18 +330,18 @@ def btn_savecomp(comp):
     """
     print("Chamando a função btn_save")
     msg = save_newcomp(comp)
-'''
+
 @eel.expose
-def get_admissao(id):
+def get_competencia(id):
     """
     Função que busca um registro de Admissão pelo ID e exibe os dados na interface de edição.
 
     Args:
         id (int): ID do registro de Admissão.
     """
-    selected_adm = show_selectedAdmissao(id)
-    eel.action_editadm(selected_adm)
-    
+    selected_comp = show_selectedCompetencia(id)
+    eel.action_editcomp(selected_comp)
+'''
 @eel.expose
 def get_emp_admissao():
     """
