@@ -35,7 +35,7 @@ function action_outadm(adm){
     // Função chamada quando os dados de admissão são recebidos do Python
     // Aqui você pode realizar as ações necessárias para exibir os dados na página
     adm.forEach(showAdm)
-}
+};
 
 // Função para preencher o campo de seleção com as opções
 eel.expose(empresaOptions);

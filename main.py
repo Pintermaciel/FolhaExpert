@@ -96,6 +96,7 @@ def fetchalldataadm():
     Função que busca todos os registros na tabela de Admissão e exibe o resultado na interface.
     """
     select_reg = showallrecordsadm()
+    print(select_reg)
     eel.action_outadm(select_reg)
 
 @eel.expose
@@ -306,9 +307,10 @@ def get_nome_rescisao():
 @eel.expose
 def fetchalldatacompetencia():
     """
-    Função que busca todos os registros na tabela de Admissão e exibe o resultado na interface.
+    Função que busca todos os registros na tabela de Competencia e exibe o resultado na interface.
     """
     select_reg = showallrecordscompetencia()
+    print(select_reg)
     eel.action_outCompetencia(select_reg)
 
 '''@eel.expose
