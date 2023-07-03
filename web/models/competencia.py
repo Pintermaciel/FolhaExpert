@@ -1,7 +1,7 @@
 import sqlite3
 import traceback
 
-def showallrecordsadm():
+def showallrecordscompetencia():
     """
     Retorna uma lista com todos os registros de admissão do banco de dados.
 
@@ -11,7 +11,7 @@ def showallrecordsadm():
     try:
         connect = sqlite3.connect(r"web/databases/storage.db")
         cursor = connect.cursor()
-        cursor.execute("SELECT * FROM admissao ORDER BY id DESC")
+        cursor.execute("SELECT id, nome, setor, cargo, competencia FROM competencia ORDER BY id DESC")
         admissao = []
         for item in cursor.fetchall():
             admissao.append(item)

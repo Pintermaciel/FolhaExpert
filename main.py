@@ -3,6 +3,8 @@ import pyautogui
 from web.models.setor import showallrecords, save_newsetor, show_selectedSetor, update_setor, show_selectedeleteSetor, show_deleteSetor
 from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm, show_selectedeleteAdmissao, show_deleteAdmissao, show_selectedEmpAdmissao, show_selectedSetorAdmissao, show_selectedCargoAdmissao
 from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res, show_selectedeleteRescisao, show_deleteRescisao, show_selectedNomeRescisao
+from web.models.competencia import showallrecordscompetencia
+
 
 eel.init('web')
 
@@ -299,7 +301,126 @@ def get_nome_rescisao():
     print(selected_adm)
     eel.nomeOptions(selected_adm)
 
+"""COMPETENCIA"""
 
+@eel.expose
+def fetchalldatacompetencia():
+    """
+    Função que busca todos os registros na tabela de Admissão e exibe o resultado na interface.
+    """
+    select_reg = showallrecordscompetencia()
+    eel.action_outCompetencia(select_reg)
+
+'''@eel.expose
+def btn_saveadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm):
+    """
+    Função que salva um novo registro de Admissão no banco de dados.
+
+    Args:
+        nome (str): Nome do funcionário.
+        cpf (str): CPF do funcionário.
+        empresa (str): Nome da empresa.
+        setor (str): Nome do setor.
+        cargo (str): Cargo do funcionário.
+        salariof (float): Salário fixo.
+        salario (float): Salário atual.
+        dataadm (str): Data de admissão.
+    """
+    print("Chamando a função btn_save")
+    msg = save_newadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm)
+    eel.save_returnadm(str(msg))
+
+@eel.expose
+def get_admissao(id):
+    """
+    Função que busca um registro de Admissão pelo ID e exibe os dados na interface de edição.
+
+    Args:
+        id (int): ID do registro de Admissão.
+    """
+    selected_adm = show_selectedAdmissao(id)
+    eel.action_editadm(selected_adm)
+    
+@eel.expose
+def get_emp_admissao():
+    """
+    Obtém a empresa de admissão selecionada e envia as opções para o frontend.
+    """
+    selected_adm = show_selectedEmpAdmissao()
+    print(selected_adm)
+    eel.empresaOptions(selected_adm)
+
+@eel.expose
+def get_setor_admissao(empresa):
+    """
+    Obtém a empresa selecionada e retorna as opções de setor relacionadas para o frontend.
+    
+    Args:
+        empresa: A empresa selecionada.
+    """
+    selected_setor = show_selectedSetorAdmissao(empresa)
+    print(selected_setor)
+    eel.setorOptions(selected_setor)
+
+@eel.expose
+def get_cargo_admissao(setor):
+    """
+    Obtém o setor selecionado e retorna as opções de cargo relacionadas para o frontend.
+    
+    Args:
+        setor: O setor selecionado.
+    """
+    selected_cargo = show_selectedCargoAdmissao(setor)
+    print(selected_cargo)
+    eel.cargoOptions(selected_cargo)
+
+@eel.expose
+def save_editadm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid):
+    """
+    Função que atualiza um registro de Admissão no banco de dados.
+
+    Args:
+        nomeedit (str): Novo nome do funcionário.
+        cpfedit (str): Novo CPF do funcionário.
+        empresaedit (str): Nova empresa.
+        setoredit (str): Novo setor.
+        cargoedit (str): Novo cargo.
+        salariofedit (float): Novo salário fixo.
+        salarioedit (float): Novo salário.
+        dataadmedit (str): Nova data de admissão.
+        editid (int): ID do registro de Admissão a ser atualizado.
+    """
+    print("Chamando a função btn_saveeditadm")
+    msg = update_adm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid)
+    
+@eel.expose
+def get_delete_admissao(id):
+    """
+    Função exposta para obter o admissao a ser excluído com base no ID fornecido.
+
+    Args:
+        id: O ID do admissao a ser excluído.
+
+    Returns:
+        int or None: O ID do admissao a ser excluído ou None se o admissao não existir.
+    """
+    select_del_admissao = show_selectedeleteAdmissao(id)
+    print(id)
+    return select_del_admissao
+
+@eel.expose
+def delete_admissao(id):
+    """
+    Função exposta para excluir um admissao com base no ID fornecido.
+
+    Args:
+        id: O ID do admissao a ser excluído.
+
+    Returns:
+        str: Uma mensagem indicando o resultado da exclusão ("success" em caso de sucesso, "Error" em caso de erro).
+    """
+    result = show_deleteAdmissao(id)
+    return result'''
 
 """START"""
 
