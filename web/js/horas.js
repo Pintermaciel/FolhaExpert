@@ -115,8 +115,8 @@ async function save_edit_js(){
     // Aqui você pode realizar as ações necessárias para obter os valores dos campos editados e enviar ao Python para salvar
     if ($("#editadmform").valid()) {
         const id = $('#editid').val();
-        const nome = $('#editnomeInput').val();
-        const competencia = $('#editcompetenciaInput').val();
+        const nome = $('#editnomeInput').text();
+        const competencia = $('#editcompetenciaInput').text();
         const hn = $('#edithnInput').val();
         const he50 = $('#edithe50Input').val();
         const he65 = $('#edithe65Input').val();
