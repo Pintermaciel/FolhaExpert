@@ -4,6 +4,7 @@ from web.models.setor import showallrecords, save_newsetor, show_selectedSetor, 
 from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm, show_selectedeleteAdmissao, show_deleteAdmissao, show_selectedEmpAdmissao, show_selectedSetorAdmissao, show_selectedCargoAdmissao
 from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res, show_selectedeleteRescisao, show_deleteRescisao, show_selectedNomeRescisao
 from web.models.competencia import showallrecordscompetencia, save_newcomp, show_selectedCompetencia, show_selectedeleteCompetencia, show_deleteCompetencia
+from web.models.horas import showallrecordshrs, show_selectedhrs
 
 
 eel.init('web')
@@ -341,59 +342,7 @@ def get_competencia(id):
     """
     selected_comp = show_selectedCompetencia(id)
     eel.action_editcomp(selected_comp)
-'''
-@eel.expose
-def get_emp_admissao():
-    """
-    Obtém a empresa de admissão selecionada e envia as opções para o frontend.
-    """
-    selected_adm = show_selectedEmpAdmissao()
-    print(selected_adm)
-    eel.empresaOptions(selected_adm)
 
-@eel.expose
-def get_setor_admissao(empresa):
-    """
-    Obtém a empresa selecionada e retorna as opções de setor relacionadas para o frontend.
-    
-    Args:
-        empresa: A empresa selecionada.
-    """
-    selected_setor = show_selectedSetorAdmissao(empresa)
-    print(selected_setor)
-    eel.setorOptions(selected_setor)
-
-@eel.expose
-def get_cargo_admissao(setor):
-    """
-    Obtém o setor selecionado e retorna as opções de cargo relacionadas para o frontend.
-    
-    Args:
-        setor: O setor selecionado.
-    """
-    selected_cargo = show_selectedCargoAdmissao(setor)
-    print(selected_cargo)
-    eel.cargoOptions(selected_cargo)
-
-@eel.expose
-def save_editadm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid):
-    """
-    Função que atualiza um registro de Admissão no banco de dados.
-
-    Args:
-        nomeedit (str): Novo nome do funcionário.
-        cpfedit (str): Novo CPF do funcionário.
-        empresaedit (str): Nova empresa.
-        setoredit (str): Novo setor.
-        cargoedit (str): Novo cargo.
-        salariofedit (float): Novo salário fixo.
-        salarioedit (float): Novo salário.
-        dataadmedit (str): Nova data de admissão.
-        editid (int): ID do registro de Admissão a ser atualizado.
-    """
-    print("Chamando a função btn_saveeditadm")
-    msg = update_adm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid)'''
-    
 @eel.expose
 def get_delete_competencia(id):
     """
@@ -422,6 +371,28 @@ def delete_competencia(id):
     """
     result = show_deleteCompetencia(id)
     return result
+
+"""HORAS"""
+
+@eel.expose
+def fetchalldatahrs():
+    """
+    Função que busca todos os registros na tabela de Competencia e exibe o resultado na interface.
+    """
+    select_reg = showallrecordshrs()
+    print(select_reg)
+    eel.action_outhrs(select_reg)
+
+@eel.expose
+def get_hrs(id):
+    """
+    Função que busca um registro de Admissão pelo ID e exibe os dados na interface de edição.
+
+    Args:
+        id (int): ID do registro de Admissão.
+    """
+    selected_comp = show_selectedhrs(id)
+    eel.action_edithrs(selected_comp)
 
 """START"""
 
