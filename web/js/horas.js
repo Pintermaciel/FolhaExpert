@@ -2,34 +2,16 @@ $(document).ready(function(){
     eel.fetchalldatahrs();
 });
 
-// Nova competencia
-async function new_comp(){
-    // Função chamada quando o botão de edição de um registro de admissão é clicado
-    // Aqui você pode realizar as ações necessárias para obter os dados do registro a ser editado e enviar ao Python
-    $('#competenciammodal').modal("show");
-}
-
-async function save_comp_js(){
-    // Função chamada quando o botão de salvar nova admissão é clicado
-    // Aqui você pode realizar as ações necessárias para obter os valores dos campos de novo registro e enviar ao Python para salvar
-        const comp = $('#compInput').val();
-        const dias = $('#diasuteisInput').val();
-        const feriados = $('#feriadosInput').val();
-        const result = await eel.btn_savecomp(comp, dias, feriados)();
-        alert("cadastrado competência: " + comp + " com " + dias + " Dias Uteis e " + feriados + " Feriados");
-        location.reload();
-};
-
 eel.expose(action_outhrs)
 function action_outhrs(competencia){
     // Função chamada quando os dados de competencia são recebidos do Python
     // Aqui você pode realizar as ações necessárias para exibir os dados na página
-    competencia.forEach(showCompetencia)
-};
+    competencia.forEach(showHoras);
+}
 
-function showCompetencia(item, index){
+function showHoras(item, index){
     // Função para exibir os dados de um registro de competencia na tabela da página
-    var get_table = document.getElementById("competencia");
+    var get_table = document.getElementById("horas");
     var tr = document.createElement("tr");
     var td = document.createElement("td");
     var td1 = document.createElement("td");
@@ -41,6 +23,7 @@ function showCompetencia(item, index){
     var td7 = document.createElement("td");
     var td8 = document.createElement("td");
     var td9 = document.createElement("td");
+    var td10 = document.createElement("td");
 
     var id = item[0]
     td.innerText = item[0]
@@ -52,12 +35,12 @@ function showCompetencia(item, index){
     td6.innerText = item[6]
     td7.innerText = item[7]
     td8.innerText = item[8]
+    td9.innerText = item[9]
+    
 
 
     var btnInfo = document.createElement("button");
-    var btnDelete = document.createElement("button");
     var infoIcon = document.createElement("i");
-    var deleteIcon = document.createElement("i");
 
     btnInfo.classList.add("btn", "btn-info", "btn-circle");
     btnInfo.setAttribute("type", "button");
@@ -65,19 +48,11 @@ function showCompetencia(item, index){
     btnInfo.setAttribute("onclick", "btn_edit('" + id + "')");
     btnInfo.setAttribute("style", "margin:5px");
 
-    btnDelete.classList.add("btn", "btn-danger", "btn-circle");
-    btnDelete.setAttribute("type", "button");
-    btnDelete.setAttribute("data-ripple-color", "dark");
-    btnDelete.setAttribute("onclick", "btn_delete('" + id + "')");
-
     infoIcon.classList.add("fas", "fa-info-circle");
-    deleteIcon.classList.add("fas", "fa-trash");
 
     btnInfo.appendChild(infoIcon);
-    btnDelete.appendChild(deleteIcon);
 
-    td9.appendChild(btnInfo);
-    td9.appendChild(btnDelete);
+    td10.appendChild(btnInfo);
 
     tr.appendChild(td);
     tr.appendChild(td1);
@@ -89,6 +64,7 @@ function showCompetencia(item, index){
     tr.appendChild(td7);
     tr.appendChild(td8);
     tr.appendChild(td9);
+    tr.appendChild(td10);
     get_table.appendChild(tr);
 }
 
@@ -113,14 +89,44 @@ function get_array_values(item, index){
         document.getElementById("editid").value = item;
     } else if (index == 1) {
         document.getElementById("editnomeInput").innerText = item;
-    } else if (index == 2) {
-        document.getElementById("editsetorInput").innerText = item;
-    } else if (index == 3) {
-        document.getElementById("editfuncaoInput").innerText = item;
     } else if (index == 4) {
         document.getElementById("editcompetenciaInput").innerText = item;
+    } else if (index == 5) {
+        document.getElementById("edithnInput").value = item;
+    } else if (index == 6) {
+        document.getElementById("edithe50Input").value = item;
+    } else if (index == 7) {
+        document.getElementById("edithe65Input").value = item;
+    } else if (index == 8) {
+        document.getElementById("edithe75Input").value = item;
+    } else if (index == 9) {
+        document.getElementById("edithe100Input").value = item;
+    } else if (index == 10) {
+        document.getElementById("faltadias").value = item;
+    } else if (index == 11) {
+        document.getElementById("faltahora").value = item;
     }
     else {}
+}
+
+// Salvar Edição de Admissão
+async function save_edit_js(){
+    // Função chamada quando o botão de salvar edição de admissão é clicado
+    // Aqui você pode realizar as ações necessárias para obter os valores dos campos editados e enviar ao Python para salvar
+    if ($("#editadmform").valid()) {
+        const id = $('#editid').val();
+        const nome = $('#editnomeInput').val();
+        const competencia = $('#editcompetenciaInput').val();
+        const hn = $('#edithnInput').val();
+        const he50 = $('#edithe50Input').val();
+        const he65 = $('#edithe65Input').val();
+        const he75 = $('#edithe75Input').val();
+        const he100 = $('#edithe100Input').val();
+        const faltadias = $('#faltadias').val();
+        const faltahora = $('#faltahora').val();
+        const result = await eel.save_edithoras(nome, competencia, hn, he50, he65, he75, he100, faltadias, faltahora, id)();
+        location.reload();
+    }
 }
 
 //Deletar

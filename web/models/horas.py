@@ -1,3 +1,4 @@
+import traceback
 import sqlite3
 
 def showallrecordshrs():
@@ -10,7 +11,7 @@ def showallrecordshrs():
     try:
         connect = sqlite3.connect(r"web/databases/storage.db")
         cursor = connect.cursor()
-        cursor.execute("SELECT id, nome, hn, he50, he65, he100, faltadias, faltahora, competencia FROM competencia ORDER BY id DESC")
+        cursor.execute("SELECT id, nome, hn, he50, he65, he75, he100, faltadias, faltahora, competencia FROM competencia ORDER BY id DESC")
         competencia = []
         for item in cursor.fetchall():
             competencia.append(item)
@@ -45,3 +46,31 @@ def show_selectedhrs(id):
         msg = "falha"
         return msg
     
+def update_horas(editnome, editcompetencia, edithn, edithe50, edithe65, edithe75, edithe100, editfaltadias, editfaltahora, editid):
+    try:
+        connect = sqlite3.connect("web/databases/storage.db")
+        cursor = connect.cursor()
+        print("Conexão com o banco de dados estabelecida com sucesso! update_horas")
+        print(editnome, editcompetencia, edithn, edithe50, edithe65, edithe75, edithe100, editfaltadias, editfaltahora, editid)
+
+        if editnome != "" and editcompetencia != "" and edithn != "" and edithe50 != "" and edithe65 != "" and edithe75 != "" and edithe100 != "" and editfaltadias != "" and editfaltahora != "":
+            query = "UPDATE competencia SET nome=?, competencia=?, hn=?, he50=?, he65=?, he75=?, he100=?, faltadias=?, faltahora=? WHERE id=?"
+            params = (editnome, editcompetencia, edithn, edithe50, edithe65, edithe75, edithe100, editfaltadias, editfaltahora, editid)
+            print("Comando SQL:", query)
+            print("Parâmetros:", params)
+            cursor.execute(query, params)
+            connect.commit()
+            connect.close()
+            msg = "sucesso"
+            print(msg)
+            return msg
+        else:
+            msg = "falha"
+            print(msg)
+            return msg
+    except Exception as error:
+        print("Erro ao executar o SQL:")
+        traceback.print_exc()
+        msg = "falha"
+        print(msg)
+        return msg

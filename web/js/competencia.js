@@ -24,8 +24,8 @@ eel.expose(action_outCompetencia)
 function action_outCompetencia(competencia){
     // Função chamada quando os dados de competencia são recebidos do Python
     // Aqui você pode realizar as ações necessárias para exibir os dados na página
-    competencia.forEach(showCompetencia)
-};
+    competencia.forEach(showCompetencia);
+}
 
 function showCompetencia(item, index){
     // Função para exibir os dados de um registro de competencia na tabela da página

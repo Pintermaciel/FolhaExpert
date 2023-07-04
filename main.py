@@ -4,7 +4,7 @@ from web.models.setor import showallrecords, save_newsetor, show_selectedSetor, 
 from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm, show_selectedeleteAdmissao, show_deleteAdmissao, show_selectedEmpAdmissao, show_selectedSetorAdmissao, show_selectedCargoAdmissao
 from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res, show_selectedeleteRescisao, show_deleteRescisao, show_selectedNomeRescisao
 from web.models.competencia import showallrecordscompetencia, save_newcomp, show_selectedCompetencia, show_selectedeleteCompetencia, show_deleteCompetencia
-from web.models.horas import showallrecordshrs, show_selectedhrs
+from web.models.horas import showallrecordshrs, show_selectedhrs, update_horas
 
 
 eel.init('web')
@@ -393,6 +393,25 @@ def get_hrs(id):
     """
     selected_comp = show_selectedhrs(id)
     eel.action_edithrs(selected_comp)
+    
+@eel.expose
+def save_edithoras(editnome, editcompetencia, edithn, edithe50, edithe65, edithe75, edithe100, editfaltadias, editfaltahora, editid):
+    """
+    Função que atualiza um registro de Admissão no banco de dados.
+
+    Args:
+        nomeedit (str): Novo nome do funcionário.
+        cpfedit (str): Novo CPF do funcionário.
+        empresaedit (str): Nova empresa.
+        setoredit (str): Novo setor.
+        cargoedit (str): Novo cargo.
+        salariofedit (float): Novo salário fixo.
+        salarioedit (float): Novo salário.
+        dataadmedit (str): Nova data de admissão.
+        editid (int): ID do registro de Admissão a ser atualizado.
+    """
+    print("Chamando a função btn_saveeditadm")
+    msg = update_horas(editnome, editcompetencia, edithn, edithe50, edithe65, edithe75, edithe100, editfaltadias, editfaltahora, editid)
 
 """START"""
 

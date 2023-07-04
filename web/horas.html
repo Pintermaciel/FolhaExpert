@@ -208,7 +208,7 @@
                                 </div>
                                 <div class="card-body">
 
-                                    <table id="competencia"  class="table align-middle">
+                                    <table id="horas"  class="table align-middle">
                                         <thead>
                                         <tr>
                                             <th scope="col">Cod</th>
@@ -253,37 +253,41 @@
                                             <p class="form-control" required id="editnomeInput"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label for="editsetorInput">Setor</label>
-                                            <p class="form-control" required id="editsetorInput"></p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="editfuncaoInput">Função</label>
-                                            <p class="form-control" required id="editfuncaoInput"></p>
-                                        </div>
-                                        <div class="form-group">
                                             <label for="editcompetenciaInput">Competência</label>
                                             <p class="form-control" required id="editcompetenciaInput"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label for="editcargoInput">Cargo</label>
-                                            <input type="text" class="form-control" required id="editcargoInput" placeholder="Digite o Cargo">
+                                            <label for="edithnInput">Horas Normais</label>
+                                            <input type="text" class="form-control" required id="edithnInput" placeholder="Digite a Quantidade De Horas Normais">
                                         </div>
                                         <div class="form-group">
-                                            <label for="editsalariofInput">Salário Fixo</label>
-                                            <input type="text" class="form-control" required id="editsalariofInput" placeholder="Digite o Salário Fixo">
+                                            <label for="edithe50Input">Horas Extras 50%</label>
+                                            <input type="text" class="form-control" required id="edithe50Input" placeholder="Digite a Quantidade De Horas Extras 50%">
                                         </div>
                                         <div class="form-group">
-                                            <label for="editsalarioInput">Salário</label>
-                                            <input type="text" class="form-control" required id="editsalarioInput" placeholder="Digite o Salário">
+                                            <label for="edithe65Input">Horas Extras 65%</label>
+                                            <input type="text" class="form-control" required id="edithe65Input" placeholder="Digite a Quantidade De Horas Extras 65%">
                                         </div>
                                         <div class="form-group">
-                                            <label for="editdataadmInput">Data de Admissão</label>
-                                            <input type="text" class="form-control" required id="editdataadmInput" placeholder="Digite a Data de Admissão">
+                                            <label for="edithe75Input">Horas Extras 75%</label>
+                                            <input type="text" class="form-control" required id="edithe75Input" placeholder="Digite a Quantidade De Horas Extras 75%">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="edithe100Input">Horas Extras 100%</label>
+                                            <input type="text" class="form-control" required id="edithe100Input" placeholder="Digite a Quantidade De Horas Extras 100%">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="faltadias">Faltas em Dias</label>
+                                            <input type="text" class="form-control" required id="faltadias" placeholder="Digite a Quantidade de Faltas em Dias">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="faltahora">Faltas em Horas</label>
+                                            <input type="text" class="form-control" required id="faltahora" placeholder="Digite a Quantidade de Faltas em Horas">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-primary" onclick="" id="save_returnadm">Salvar</button>
+                                        <button type="submit" class="btn btn-primary" onclick="save_edit_js();" id="save_returnadm">Salvar</button>
                                     </div>
                                 </form>
                             </div>
