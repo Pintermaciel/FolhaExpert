@@ -3,7 +3,7 @@ import pyautogui
 from web.models.setor import showallrecords, save_newsetor, show_selectedSetor, update_setor, show_selectedeleteSetor, show_deleteSetor
 from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdmissao, update_adm, show_selectedeleteAdmissao, show_deleteAdmissao, show_selectedEmpAdmissao, show_selectedSetorAdmissao, show_selectedCargoAdmissao
 from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res, show_selectedeleteRescisao, show_deleteRescisao, show_selectedNomeRescisao
-from web.models.competencia import showallrecordscompetencia, save_newcomp, show_selectedCompetencia
+from web.models.competencia import showallrecordscompetencia, save_newcomp, show_selectedCompetencia, show_selectedeleteCompetencia, show_deleteCompetencia
 
 
 eel.init('web')
@@ -392,10 +392,10 @@ def save_editadm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofe
         editid (int): ID do registro de Admissão a ser atualizado.
     """
     print("Chamando a função btn_saveeditadm")
-    msg = update_adm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid)
+    msg = update_adm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid)'''
     
 @eel.expose
-def get_delete_admissao(id):
+def get_delete_competencia(id):
     """
     Função exposta para obter o admissao a ser excluído com base no ID fornecido.
 
@@ -405,12 +405,12 @@ def get_delete_admissao(id):
     Returns:
         int or None: O ID do admissao a ser excluído ou None se o admissao não existir.
     """
-    select_del_admissao = show_selectedeleteAdmissao(id)
+    select_del_admissao = show_selectedeleteCompetencia(id)
     print(id)
     return select_del_admissao
 
 @eel.expose
-def delete_admissao(id):
+def delete_competencia(id):
     """
     Função exposta para excluir um admissao com base no ID fornecido.
 
@@ -420,8 +420,8 @@ def delete_admissao(id):
     Returns:
         str: Uma mensagem indicando o resultado da exclusão ("success" em caso de sucesso, "Error" em caso de erro).
     """
-    result = show_deleteAdmissao(id)
-    return result'''
+    result = show_deleteCompetencia(id)
+    return result
 
 """START"""
 

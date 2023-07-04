@@ -109,3 +109,21 @@ function get_array_values(item, index){
     }
     else {}
 }
+
+//Deletar
+
+let deleteCompetenciaId; // Variável global para armazenar o ID do admissao a ser excluído
+
+async function btn_delete(id) {
+    $('#deleteadmissaomodal').modal("show"); // Abre o modal de confirmação de exclusão
+    deleteCompetenciaId = await eel.get_delete_competencia(id)(); // Obtém o ID do admissao a ser excluído usando a função exposta do lado do servidor
+}
+
+async function btn_submitdelete() {
+    const response = await eel.delete_competencia(deleteCompetenciaId)(); // Exclui o admissao usando o ID armazenado na variável deleteAdmissaoId
+    if (response === "success") {
+        location.reload(); // Recarrega a página após a exclusão bem-sucedida
+    } else {
+        console.log("Erro ao excluir o setor."); // Exibe uma mensagem de erro caso ocorra algum problema na exclusão
+    }
+}
