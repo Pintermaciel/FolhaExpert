@@ -314,7 +314,7 @@ def fetchalldatacompetencia():
     eel.action_outCompetencia(select_reg)
 
 @eel.expose
-def btn_savecomp(comp):
+def btn_savecomp(comp, dias, feriados):
     """
     Função que salva um novo registro de Admissão no banco de dados.
 
@@ -329,7 +329,7 @@ def btn_savecomp(comp):
         dataadm (str): Data de admissão.
     """
     print("Chamando a função btn_save")
-    msg = save_newcomp(comp)
+    msg = save_newcomp(comp, dias, feriados)
 
 @eel.expose
 def get_competencia(id):

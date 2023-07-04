@@ -3,12 +3,20 @@ $(document).ready(function(){
 });
 
 // Nova competencia
+async function new_comp(){
+    // Função chamada quando o botão de edição de um registro de admissão é clicado
+    // Aqui você pode realizar as ações necessárias para obter os dados do registro a ser editado e enviar ao Python
+    $('#competenciammodal').modal("show");
+}
+
 async function save_comp_js(){
     // Função chamada quando o botão de salvar nova admissão é clicado
     // Aqui você pode realizar as ações necessárias para obter os valores dos campos de novo registro e enviar ao Python para salvar
         const comp = $('#compInput').val();
-        const result = await eel.btn_savecomp(comp)();
-        alert("cadastrado competência: " + comp);
+        const dias = $('#diasuteisInput').val();
+        const feriados = $('#feriadosInput').val();
+        const result = await eel.btn_savecomp(comp, dias, feriados)();
+        alert("cadastrado competência: " + comp + " com " + dias + " Dias Uteis e " + feriados + " Feriados");
         location.reload();
 };
 
@@ -18,7 +26,6 @@ function action_outCompetencia(competencia){
     // Aqui você pode realizar as ações necessárias para exibir os dados na página
     competencia.forEach(showCompetencia)
 };
-
 
 function showCompetencia(item, index){
     // Função para exibir os dados de um registro de competencia na tabela da página
@@ -77,7 +84,7 @@ async function btn_edit(id){
     // Função chamada quando o botão de edição de um registro de admissão é clicado
     // Aqui você pode realizar as ações necessárias para obter os dados do registro a ser editado e enviar ao Python
     await eel.get_competencia(id)();
-    $('#editadmmodal').modal("show");
+    $('#editmodal').modal("show");
 }
 
 eel.expose(action_editcomp)
