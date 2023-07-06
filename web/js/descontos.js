@@ -42,12 +42,12 @@ function showDesc(item, index){
     td7.innerText = item[7]
     td8.innerText = item[8]
     td9.innerText = item[9]
-    td10.innerText = item[9]
-    td11.innerText = item[9]
-    td12.innerText = item[9]
-    td13.innerText = item[9]
-    td14.innerText = item[9]
-    td15.innerText = item[9]
+    td10.innerText = item[10]
+    td11.innerText = item[11]
+    td12.innerText = item[12]
+    td13.innerText = item[13]
+    td14.innerText = item[14]
+    td15.innerText = item[15]
     
 
 
@@ -90,7 +90,7 @@ function showDesc(item, index){
 async function btn_edit(id){
     // Função chamada quando o botão de edição de um registro de admissão é clicado
     // Aqui você pode realizar as ações necessárias para obter os dados do registro a ser editado e enviar ao Python
-    await eel.get_conv(id)();
+    await eel.get_desc(id)();
     $('#editmodal').modal("show");
 }
 
@@ -107,17 +107,33 @@ function get_array_values(item, index){
         document.getElementById("editid").value = item;
     } else if (index == 1) {
         document.getElementById("editnomeInput").innerText = item;
+    } else if (index == 18) {
+        document.getElementById("editvalorinss").value = item;
+    } else if (index == 19) {
+        document.getElementById("editvalorirrf").value = item;
+    } else if (index == 20) {
+        document.getElementById("editcafe").value = item;
+    } else if (index == 21) {
+        document.getElementById("editmarmita").value = item;
+    } else if (index == 22) {
+        document.getElementById("editos").value = item;
+    } else if (index == 23) {
+        document.getElementById("editmultas").value = item;
+    } else if (index == 24) {
+        document.getElementById("editpensao").value = item;
+    } else if (index == 25) {
+        document.getElementById("editdeslocamento").value = item;
+    } else if (index == 26) {
+        document.getElementById("editreb_desp_viagens").value = item;
+    } else if (index == 27) {
+        document.getElementById("editoutros_descontos").value = item;
+    } else if (index == 28) {
+        document.getElementById("editoutros_recebimentos").value = item;
+    } else if (index == 29) {
+        document.getElementById("editvalor_pag_deposito").value = item;
     } else if (index == 4) {
         document.getElementById("editcompetenciaInput").innerText = item;
-    } else if (index == 14) {
-        document.getElementById("editcartaoacivale").value = item;
-    } else if (index == 15) {
-        document.getElementById("editunimed").value = item;
-    } else if (index == 16) {
-        document.getElementById("editdesp_unimed").value = item;
-    } else if (index == 17) {
-        document.getElementById("farmacia").value = item;
-    }
+    } 
     else {}
 }
 

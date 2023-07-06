@@ -6,7 +6,7 @@ from web.models.rescisao import showallrecordsres, save_newres, show_selectedRes
 from web.models.competencia import showallrecordscompetencia, save_newcomp, show_selectedCompetencia, show_selectedeleteCompetencia, show_deleteCompetencia
 from web.models.horas import showallrecordshrs, show_selectedhrs, update_horas
 from web.models.convenios import showallrecordsconv, show_selectedconv, update_conv
-from web.models.descontos import showallrecordsdesc
+from web.models.descontos import showallrecordsdesc, show_selecteddesc
 import sys
 
 # Set sys.stdout and sys.stderr to writable objects
@@ -471,6 +471,18 @@ def fetchalldatadesc():
     select_reg = showallrecordsdesc()
     print(select_reg)
     eel.action_outdesc(select_reg)
+    
+@eel.expose
+def get_desc(id):
+    """
+    Função que busca um registro de Admissão pelo ID e exibe os dados na interface de edição.
+
+    Args:
+        id (int): ID do registro de Admissão.
+    """
+    selected_comp = show_selecteddesc(id)
+    eel.action_editdesc(selected_comp)
+    
     
 """START"""
 

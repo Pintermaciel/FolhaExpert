@@ -40,7 +40,7 @@ def showallrecordsdesc():
         msg = "Erro"
         return msg
 
-def show_selectedhrs(id):
+def show_selecteddesc(id):
     """
     Retorna um registro de horas específico com base no ID fornecido.
 
