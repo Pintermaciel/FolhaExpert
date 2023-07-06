@@ -24,6 +24,12 @@ function showDesc(item, index){
     var td8 = document.createElement("td");
     var td9 = document.createElement("td");
     var td10 = document.createElement("td");
+    var td11 = document.createElement("td");
+    var td12 = document.createElement("td");
+    var td13 = document.createElement("td");
+    var td14 = document.createElement("td");
+    var td15 = document.createElement("td");
+    var td16 = document.createElement("td");
 
     var id = item[0]
     td.innerText = item[0]
@@ -36,6 +42,12 @@ function showDesc(item, index){
     td7.innerText = item[7]
     td8.innerText = item[8]
     td9.innerText = item[9]
+    td10.innerText = item[9]
+    td11.innerText = item[9]
+    td12.innerText = item[9]
+    td13.innerText = item[9]
+    td14.innerText = item[9]
+    td15.innerText = item[9]
     
 
 
@@ -52,7 +64,7 @@ function showDesc(item, index){
 
     btnInfo.appendChild(infoIcon);
 
-    td10.appendChild(btnInfo);
+    td16.appendChild(btnInfo);
 
     tr.appendChild(td);
     tr.appendChild(td1);
@@ -65,6 +77,12 @@ function showDesc(item, index){
     tr.appendChild(td8);
     tr.appendChild(td9);
     tr.appendChild(td10);
+    tr.appendChild(td11);
+    tr.appendChild(td12);
+    tr.appendChild(td13);
+    tr.appendChild(td14);
+    tr.appendChild(td15);
+    tr.appendChild(td16);
     get_table.appendChild(tr);
 }
 
@@ -76,8 +94,8 @@ async function btn_edit(id){
     $('#editmodal').modal("show");
 }
 
-eel.expose(action_editconv)
-function action_editconv(editcomp){
+eel.expose(action_editdesc)
+function action_editdesc(editcomp){
     // Função chamada quando os dados do registro a ser editado são recebidos do Python
     // Aqui você pode realizar as ações necessárias para exibir os dados na modal de edição
     editcomp.forEach(get_array_values);

@@ -102,7 +102,7 @@ async function save_edit_js(){
         const competencia = $('#editcompetenciaInput').text();
         const cartaoacivale = $('#editcartaoacivale').val();
         const unimed = $('#editunimed').val();
-        const desp_unimed = $('#edidesp_unimed').val();
+        const desp_unimed = $('#editdesp_unimed').val();
         const farmacia = $('#farmacia').val();
         const result = await eel.save_editconv(nome, competencia, cartaoacivale, unimed, desp_unimed, farmacia, id)();
         location.reload();

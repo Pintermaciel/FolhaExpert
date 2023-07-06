@@ -11,7 +11,26 @@ def showallrecordsdesc():
     try:
         connect = sqlite3.connect(r"web/databases/storage.db")
         cursor = connect.cursor()
-        cursor.execute("SELECT id, nome, hn, he50, he65, he75, he100, faltadias, faltahora, competencia FROM competencia ORDER BY id DESC")
+        cursor.execute("""
+                        SELECT  id,
+                                nome,
+                                valor_inss,
+                                valor_irrf,
+                                cafe,
+                                marmita,
+                                os,
+                                multas,
+                                pensao,
+                                plantao,
+                                deslocamento,
+                                reb_desp_viagens,
+                                outros_descontos,
+                                outros_recebimentos,
+                                valor_pag_deposito,
+                                competencia 
+                        FROM competencia 
+                        ORDER BY id DESC;
+                        """)
         competencia = []
         for item in cursor.fetchall():
             competencia.append(item)
