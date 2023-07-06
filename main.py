@@ -5,6 +5,12 @@ from web.models.admissao import showallrecordsadm, save_newadm, show_selectedAdm
 from web.models.rescisao import showallrecordsres, save_newres, show_selectedRescisao, update_res, show_selectedeleteRescisao, show_deleteRescisao, show_selectedNomeRescisao
 from web.models.competencia import showallrecordscompetencia, save_newcomp, show_selectedCompetencia, show_selectedeleteCompetencia, show_deleteCompetencia
 from web.models.horas import showallrecordshrs, show_selectedhrs, update_horas
+from web.models.convenios import showallrecordsconv, show_selectedconv, update_conv
+import sys
+
+# Set sys.stdout and sys.stderr to writable objects
+sys.stdout = open('stdout.log', 'w')
+sys.stderr = open('stderr.log', 'w')
 
 
 eel.init('web')
@@ -412,6 +418,47 @@ def save_edithoras(editnome, editcompetencia, edithn, edithe50, edithe65, edithe
     """
     print("Chamando a função btn_saveeditadm")
     msg = update_horas(editnome, editcompetencia, edithn, edithe50, edithe65, edithe75, edithe100, editfaltadias, editfaltahora, editid)
+
+"""DESCONTOS"""
+
+@eel.expose
+def fetchalldataconv():
+    """
+    Função que busca todos os registros na tabela de Competencia e exibe o resultado na interface.
+    """
+    select_reg = showallrecordsconv()
+    print(select_reg)
+    eel.action_outconv(select_reg)
+
+@eel.expose
+def get_conv(id):
+    """
+    Função que busca um registro de Admissão pelo ID e exibe os dados na interface de edição.
+
+    Args:
+        id (int): ID do registro de Admissão.
+    """
+    selected_comp = show_selectedconv(id)
+    eel.action_editconv(selected_comp)
+    
+@eel.expose
+def save_editconv(editnome, editcompetencia, editcartaoacivale, editunimed, editdesp_unimed, editfarmacia, editid):
+    """
+    Função que atualiza um registro de Admissão no banco de dados.
+
+    Args:
+        nomeedit (str): Novo nome do funcionário.
+        cpfedit (str): Novo CPF do funcionário.
+        empresaedit (str): Nova empresa.
+        setoredit (str): Novo setor.
+        cargoedit (str): Novo cargo.
+        salariofedit (float): Novo salário fixo.
+        salarioedit (float): Novo salário.
+        dataadmedit (str): Nova data de admissão.
+        editid (int): ID do registro de Admissão a ser atualizado.
+    """
+    print("Chamando a função btn_saveeditadm")
+    msg = update_conv(editnome, editcompetencia, editcartaoacivale, editunimed, editdesp_unimed, editfarmacia, editid)
 
 """START"""
 

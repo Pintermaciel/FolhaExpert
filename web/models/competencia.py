@@ -27,7 +27,7 @@ def save_newcomp(comp, dias, feriados):
         print("Conexão com o banco de dados estabelecida com sucesso!")
 
         if comp != "" and dias != "" and feriados != "":
-            cursor.execute("INSERT INTO competencia (nome, setor, funcao, competencia, hn, he50, he65, he75, he100, faltadias, faltahora, diasuteis, feriados) SELECT COALESCE(nome, 0), COALESCE(setor, 0), COALESCE(cargo, 0), ?, 0, 0, 0, 0, 0, 0, 0, ?, ? FROM admissao WHERE nome NOT IN (SELECT nome FROM rescisao);", (comp, dias, feriados))
+            cursor.execute("INSERT INTO competencia (nome, setor, funcao, competencia, hn, he50, he65, he75, he100, faltadias, faltahora, diasuteis, feriados, cartao_acivale, unimed, desp_unimed, farmacia) SELECT COALESCE(nome, 0), COALESCE(setor, 0), COALESCE(cargo, 0), ?, 0, 0, 0, 0, 0, 0, 0, ?, ?, 0, 0, 0, 0 FROM admissao WHERE nome NOT IN (SELECT nome FROM rescisao);", (comp, dias, feriados))
             connect.commit()
             connect.close()
             msg = "sucesso"

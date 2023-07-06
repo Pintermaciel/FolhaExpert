@@ -208,7 +208,7 @@
                                 </div>
                                 <div class="card-body">
 
-                                    <table class="table align-middle">
+                                    <table id="convenios" class="table align-middle">
                                         <thead>
                                         <tr>
                                             <th scope="col">Cod</th>
@@ -222,40 +222,6 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Matheus Henrique Pinter Maciel</td>
-                                            <td>220</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>03/2023</td>
-                                            <td>
-                                                <button type="button" class="btn btn-info btn-circle" data-ripple-color="dark">
-                                                    <i class="fas fa-info-circle"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-circle" data-ripple-color="dark">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Matheus Henrique Pinter Maciel</td>
-                                            <td>220</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>03/2023</td>
-                                            <td>
-                                                <button type="button" class="btn btn-info btn-circle" data-ripple-color="dark">
-                                                    <i class="fas fa-info-circle"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-circle" data-ripple-color="dark">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -265,7 +231,52 @@
                         
                     </div>
                     <!--end of Roll-->
-
+                    <!-- editadm Modal -->
+                    <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Editar Competência</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <form id="editadmform" action="#">
+                                    <div class="modal-body">
+                                        <input type="hidden" name="editid" id="editid">
+                                        <div class="form-group">
+                                            <label for="editnomeInput">Nome</label>
+                                            <p class="form-control" required id="editnomeInput"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="editcompetenciaInput">Competência</label>
+                                            <p class="form-control" required id="editcompetenciaInput"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="editcartaoacivale">Cartão Acivale</label>
+                                            <input type="text" class="form-control" required id="editcartaoacivale" placeholder="Digite o Valor Cartão Acivale">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="editunimed">Unimed</label>
+                                            <input type="text" class="form-control" required id="editunimed" placeholder="Digite o Valor Unimed">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="editdesp_unimed">Despesa Unimed</label>
+                                            <input type="text" class="form-control" required id="editdesp_unimed" placeholder="Digite o Valor Despesa Unimed">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="farmacia">Farmacia</label>
+                                            <input type="text" class="form-control" required id="farmacia" placeholder="Digite o Valor Farmacia">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary" onclick="save_edit_js();" id="save_returnadm">Salvar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -325,7 +336,8 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Eel javascripts-->
-    <script src="js/main.js"></script>
+    <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../js/convenios.js"></script>
 
 </body>
 
