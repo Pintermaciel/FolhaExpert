@@ -1,7 +1,7 @@
 import traceback
 import sqlite3
 
-def showallrecordshrs():
+def showallrecordsdesc():
     """
     Retorna uma lista com todos os registros de horas do banco de dados.
 

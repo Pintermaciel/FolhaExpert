@@ -1,0 +1,7 @@
+[]
+[]
+Chamando a função btn_save
+Conexão com o banco de dados estabelecida com sucesso!
+[(21, 'Rafael', 'Administrativo', 'Financeiro', '20'), (20, 'Marcia', 'Administrativo', 'Departamento Pessoal', '20')]
+[(21, 'Rafael', '0', '0', '0', '0', '20'), (20, 'Marcia', '0', '0', '0', '0', '20')]
+[(21, 'Rafael', '0', '0', '0', '0', '0', '0', '0', '20'), (20, 'Marcia', '0', '0', '0', '0', '0', '0', '0', '20')]

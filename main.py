@@ -6,6 +6,7 @@ from web.models.rescisao import showallrecordsres, save_newres, show_selectedRes
 from web.models.competencia import showallrecordscompetencia, save_newcomp, show_selectedCompetencia, show_selectedeleteCompetencia, show_deleteCompetencia
 from web.models.horas import showallrecordshrs, show_selectedhrs, update_horas
 from web.models.convenios import showallrecordsconv, show_selectedconv, update_conv
+from web.models.descontos import showallrecordsdesc
 import sys
 
 # Set sys.stdout and sys.stderr to writable objects
@@ -419,7 +420,7 @@ def save_edithoras(editnome, editcompetencia, edithn, edithe50, edithe65, edithe
     print("Chamando a função btn_saveeditadm")
     msg = update_horas(editnome, editcompetencia, edithn, edithe50, edithe65, edithe75, edithe100, editfaltadias, editfaltahora, editid)
 
-"""DESCONTOS"""
+"""CONVENIOS"""
 
 @eel.expose
 def fetchalldataconv():
@@ -459,10 +460,21 @@ def save_editconv(editnome, editcompetencia, editcartaoacivale, editunimed, edit
     """
     print("Chamando a função btn_saveeditadm")
     msg = update_conv(editnome, editcompetencia, editcartaoacivale, editunimed, editdesp_unimed, editfarmacia, editid)
+    
+"""DESCONTOS"""
 
+@eel.expose
+def fetchalldatadesc():
+    """
+    Função que busca todos os registros na tabela de Competencia e exibe o resultado na interface.
+    """
+    select_reg = showallrecordsdesc()
+    print(select_reg)
+    eel.action_outdesc(select_reg)
+    
 """START"""
 
 eel.start(
-    'rescisao.html',
+    'competencia.html',
     size=pyautogui.size(),
 )
