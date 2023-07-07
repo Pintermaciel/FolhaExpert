@@ -138,18 +138,28 @@ function get_array_values(item, index){
 }
 
 // Salvar Edição de Admissão
-async function save_edit_js(){
-    // Função chamada quando o botão de salvar edição de admissão é clicado
-    // Aqui você pode realizar as ações necessárias para obter os valores dos campos editados e enviar ao Python para salvar
+async function save_edit_js() {
     if ($("#editadmform").valid()) {
         const id = $('#editid').val();
         const nome = $('#editnomeInput').text();
-        const competencia = $('#editcompetenciaInput').text();
-        const cartaoacivale = $('#editcartaoacivale').val();
-        const unimed = $('#editunimed').val();
-        const desp_unimed = $('#edidesp_unimed').val();
-        const farmacia = $('#farmacia').val();
-        const result = await eel.save_editconv(nome, competencia, cartaoacivale, unimed, desp_unimed, farmacia, id)();
+        const valorinss = $('#editvalorinss').val();
+        const valorirrf = $('#editvalorirrf').val();
+        const cafe = $('#editcafe').val();
+        const marmita = $('#editmarmita').val();
+        const os = $('#editos').val();
+        const multas = $('#editmultas').val();
+        const pensao = $('#editpensao').val();
+        const deslocamento = $('#editdeslocamento').val();
+        const rebdespviagens = $('#editreb_desp_viagens').val();
+        const outrosdescontos = $('#editoutros_descontos').val();
+        const outrosrecebimentos = $('#editoutros_recebimentos').val();
+        const valorpagdeposito = $('#editvalor_pag_deposito').val();
+        const competencia = $('#editcompetenciaInput').val();
+        const cartaoacivale = $('#editcartaoacivale').val(); 
+        const unimed = $('#editunimed').val(); 
+        const desp_unimed = $('#editdesp_unimed').val(); 
+        const farmacia = $('#editfarmacia').val(); 
+        const result = await eel.save_editdesc(nome, competencia, cartaoacivale, unimed, desp_unimed, farmacia, id, valorinss, valorirrf, cafe, marmita, os, multas, pensao, deslocamento, rebdespviagens, outrosdescontos, outrosrecebimentos, valorpagdeposito)();
         location.reload();
     }
 }

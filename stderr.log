@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/matheushmfp/Documentos/FolhaExpert1/folhaexpert/lib/python3.11/site-packages/eel/__init__.py", line 318, in _process_message
+    return_val = _exposed_functions[message['name']](*message['args'])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: save_editdesc() takes 7 positional arguments but 19 were given

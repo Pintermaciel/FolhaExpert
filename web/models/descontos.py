@@ -65,16 +65,16 @@ def show_selecteddesc(id):
         msg = "falha"
         return msg
     
-def update_horas(editnome, editcompetencia, edithn, edithe50, edithe65, edithe75, edithe100, editfaltadias, editfaltahora, editid):
+def update_desc(editnome, editcompetencia, editcartaoacivale, editunimed, editdesp_unimed, editfarmacia, editid):
     try:
-        if editnome != "" and editcompetencia != "" and edithn != "" and edithe50 != "" and edithe65 != "" and edithe75 != "" and edithe100 != "" and editfaltadias != "" and editfaltahora != "":
+        if editnome != "" and editcompetencia != "" and editcartaoacivale != "" and editunimed != "" and editdesp_unimed != "" and editfarmacia != "":
             connect = sqlite3.connect("web/databases/storage.db")
             cursor = connect.cursor()
             print("Conexão com o banco de dados estabelecida com sucesso! update_horas")
-            print(editnome, editcompetencia, edithn, edithe50, edithe65, edithe75, edithe100, editfaltadias, editfaltahora, editid)
+            print(editnome, editcompetencia, editcartaoacivale, editunimed, editdesp_unimed, editfarmacia, editid)
 
-            query = "UPDATE competencia SET nome=?, competencia=?, hn=?, he50=?, he65=?, he75=?, he100=?, faltadias=?, faltahora=? WHERE id=?"
-            params = (editnome, editcompetencia, edithn, edithe50, edithe65, edithe75, edithe100, editfaltadias, editfaltahora, editid)
+            query = "UPDATE competencia SET nome=?, competencia=?, cartaoacivale=?, unimed=?, desp_unimed=?, farmacia=? WHERE id=?"
+            params = (editnome, editcompetencia, editcartaoacivale, editunimed, editdesp_unimed, editfarmacia, editid)
             print("Comando SQL:", query)
             print("Parâmetros:", params)
             cursor.execute(query, params)

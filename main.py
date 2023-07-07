@@ -6,7 +6,7 @@ from web.models.rescisao import showallrecordsres, save_newres, show_selectedRes
 from web.models.competencia import showallrecordscompetencia, save_newcomp, show_selectedCompetencia, show_selectedeleteCompetencia, show_deleteCompetencia
 from web.models.horas import showallrecordshrs, show_selectedhrs, update_horas
 from web.models.convenios import showallrecordsconv, show_selectedconv, update_conv
-from web.models.descontos import showallrecordsdesc, show_selecteddesc
+from web.models.descontos import showallrecordsdesc, show_selecteddesc, update_desc
 import sys
 
 # Set sys.stdout and sys.stderr to writable objects
@@ -483,7 +483,23 @@ def get_desc(id):
     selected_comp = show_selecteddesc(id)
     eel.action_editdesc(selected_comp)
     
-    
+@eel.expose
+def save_editdesc(editnome, editcompetencia, editcartaoacivale, editunimed, editdesp_unimed, editfarmacia, editid):
+    """
+    Função que atualiza um registro de Admissão no banco de dados.
+
+    Args:
+        editnome (str): Novo nome do funcionário.
+        editcompetencia (str): Nova competência.
+        editcartaoacivale (str): Novo valor do cartão Acivale.
+        editunimed (str): Novo valor do Unimed.
+        editdesp_unimed (str): Nova despesa da Unimed.
+        editfarmacia (str): Novo valor da farmácia.
+        editid (int): ID do registro de Admissão a ser atualizado.
+    """
+    print("Chamando a função save_editdesc")
+    msg = update_desc(editnome, editcompetencia, editcartaoacivale, editunimed, editdesp_unimed, editfarmacia, editid)
+
 """START"""
 
 eel.start(
