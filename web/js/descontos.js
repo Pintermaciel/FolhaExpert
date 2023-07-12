@@ -140,7 +140,7 @@ function get_array_values(item, index){
 // Salvar Edição de Admissão
 async function save_edit_js() {
     if ($("#editadmform").valid()) {
-        const id = $('#editid').val();
+        const editid = $('#editid').val(); // Alteração: substituir "id" por "editid"
         const nome = $('#editnomeInput').text();
         const valorinss = $('#editvalorinss').val();
         const valorirrf = $('#editvalorirrf').val();
@@ -154,12 +154,12 @@ async function save_edit_js() {
         const outrosdescontos = $('#editoutros_descontos').val();
         const outrosrecebimentos = $('#editoutros_recebimentos').val();
         const valorpagdeposito = $('#editvalor_pag_deposito').val();
-        const competencia = $('#editcompetenciaInput').val();
+        const competencia = $('#editcompetenciaInput').text();
         const cartaoacivale = $('#editcartaoacivale').val(); 
         const unimed = $('#editunimed').val(); 
         const desp_unimed = $('#editdesp_unimed').val(); 
         const farmacia = $('#editfarmacia').val(); 
-        const result = await eel.save_editdesc(nome, competencia, cartaoacivale, unimed, desp_unimed, farmacia, id, valorinss, valorirrf, cafe, marmita, os, multas, pensao, deslocamento, rebdespviagens, outrosdescontos, outrosrecebimentos, valorpagdeposito)();
+        const result = await eel.save_editdesc(nome, valorinss, valorirrf, cafe, marmita, os, multas, pensao, deslocamento, rebdespviagens, outrosdescontos, outrosrecebimentos, valorpagdeposito, competencia, cartaoacivale, unimed, desp_unimed, farmacia, editid)(); // Alteração: substituir "id" por "editid"
         location.reload();
     }
 }

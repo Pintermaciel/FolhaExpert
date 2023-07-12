@@ -1,4 +1,56 @@
-[(23, 'Rafael', 'Administrativo', 'Financeiro', '10'), (22, 'Marcia', 'Administrativo', 'Departamento Pessoal', '10'), (21, 'Rafael', 'Administrativo', 'Financeiro', '20'), (20, 'Marcia', 'Administrativo', 'Departamento Pessoal', '20')]
-[(23, 'Rafael', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '10'), (22, 'Marcia', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '10'), (21, 'Rafael', None, None, None, None, None, None, None, None, None, None, None, None, None, '20'), (20, 'Marcia', None, None, None, None, None, None, None, None, None, None, None, None, None, '20')]
+[]
+[]
+Conexão com o banco de dados estabelecida com sucesso! show_selectedEmpAdmissao
+['Macrofrio', 'Topfrio']
+Conexão com o banco de dados estabelecida com sucesso! show_selectedSetorAdmissao
+['Administrativo', 'Almoxarifado', 'Comercial', 'Compras', 'Custos', 'Diretoria', 'Eletrica', 'Elétrica', 'Equipamentos', 'Logística ', 'Loja', 'Montagem Externa', 'Painel', 'PCP', 'Portas', 'Projetos']
+Conexão com o banco de dados estabelecida com sucesso! show_selectedCargoAdmissao
+['Analista de Sistemas', 'Auxiliar Administrativo', 'Auxiliar de Contabilidade', 'Auxiliar de Departamento Pessoal', 'Contador(a)', 'Faxineira']
+Conexão com o banco de dados estabelecida com sucesso! show_selectedCargoAdmissao
+['Gerente de Vendas', 'Vendedor Externo', 'Vendedor Interno']
+[]
+Conexão com o banco de dados estabelecida com sucesso! show_selectedEmpAdmissao
+['Macrofrio', 'Topfrio']
+Conexão com o banco de dados estabelecida com sucesso! show_selectedSetorAdmissao
+['Administrativo', 'Almoxarifado', 'Comercial', 'Compras', 'Custos', 'Diretoria', 'Eletrica', 'Elétrica', 'Equipamentos', 'Logística ', 'Loja', 'Montagem Externa', 'Painel', 'PCP', 'Portas', 'Projetos']
+Conexão com o banco de dados estabelecida com sucesso! show_selectedCargoAdmissao
+['Analista de Sistemas', 'Auxiliar Administrativo', 'Auxiliar de Contabilidade', 'Auxiliar de Departamento Pessoal', 'Contador(a)', 'Faxineira']
+Chamando a função btn_save
+Conexão com o banco de dados estabelecida com sucesso!
+[(20, 'matheus', '0000', 'Macrofrio', 'Administrativo', 'Analista de Sistemas', '000', '0', '000')]
+Conexão com o banco de dados estabelecida com sucesso! show_selectedAdmissao
+Conexão com o banco de dados estabelecida com sucesso! show_selectedEmpAdmissao
+['Macrofrio', 'Topfrio']
+Conexão com o banco de dados estabelecida com sucesso! show_selectedSetorAdmissao
+['Administrativo', 'Almoxarifado', 'Comercial', 'Compras', 'Custos', 'Diretoria', 'Eletrica', 'Elétrica', 'Equipamentos', 'Logística ', 'Loja', 'Montagem Externa', 'Painel', 'PCP', 'Portas', 'Projetos']
+Conexão com o banco de dados estabelecida com sucesso! show_selectedCargoAdmissao
+['Analista de Sistemas', 'Auxiliar Administrativo', 'Auxiliar de Contabilidade', 'Auxiliar de Departamento Pessoal', 'Contador(a)', 'Faxineira']
+Chamando a função btn_save
+Conexão com o banco de dados estabelecida com sucesso!
+[(21, 'marcia', '000', 'Macrofrio', 'Administrativo', 'Analista de Sistemas', '0', '0', '0'), (20, 'matheus', '0000', 'Macrofrio', 'Administrativo', 'Analista de Sistemas', '000', '0', '000')]
+Conexão com o banco de dados estabelecida com sucesso! show_selectedNomeRescisao
+['matheus', 'marcia']
+Chamando a função btn_save
+Conexão com o banco de dados estabelecida com sucesso! save_newres
+[]
+Chamando a função btn_save
+Conexão com o banco de dados estabelecida com sucesso!
+[(24, 'marcia', 'Administrativo', 'Analista de Sistemas', '01/2023')]
+Conexão com o banco de dados estabelecida com sucesso! show_selectedeleteRescisao
+9
+[(24, 'marcia', 'Administrativo', 'Analista de Sistemas', '01/2023')]
+Chamando a função btn_save
+Conexão com o banco de dados estabelecida com sucesso!
+[(26, 'marcia', 'Administrativo', 'Analista de Sistemas', '02/2023'), (25, 'matheus', 'Administrativo', 'Analista de Sistemas', '02/2023'), (24, 'marcia', 'Administrativo', 'Analista de Sistemas', '01/2023')]
+Conexão com o banco de dados estabelecida com sucesso! show_selectedCompetencia
+Conexão com o banco de dados estabelecida com sucesso! show_selectedeleteCompetencia
+25
+[(26, 'marcia', '0', '0', '0', '0', '0', '0', '0', '02/2023'), (25, 'matheus', '0', '0', '0', '0', '0', '0', '0', '02/2023'), (24, 'marcia', '0', '0', '0', '0', '0', '0', '0', '01/2023')]
 Conexão com o banco de dados estabelecida com sucesso! show_selectedhoras
-[(23, 'Rafael', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '10'), (22, 'Marcia', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '10'), (21, 'Rafael', None, None, None, None, None, None, None, None, None, None, None, None, None, '20'), (20, 'Marcia', None, None, None, None, None, None, None, None, None, None, None, None, None, '20')]
+[(26, 'marcia', '0', '0', '0', '0', '02/2023'), (25, 'matheus', '0', '0', '0', '0', '02/2023'), (24, 'marcia', '0', '0', '0', '0', '01/2023')]
+[(26, 'marcia', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '02/2023'), (25, 'matheus', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '02/2023'), (24, 'marcia', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '01/2023')]
+26
+Conexão com o banco de dados estabelecida com sucesso! show_selectedhoras
+25
+Conexão com o banco de dados estabelecida com sucesso! show_selectedhoras
+[(26, 'marcia', 'Administrativo', 'Analista de Sistemas', '02/2023'), (25, 'matheus', 'Administrativo', 'Analista de Sistemas', '02/2023'), (24, 'marcia', 'Administrativo', 'Analista de Sistemas', '01/2023')]

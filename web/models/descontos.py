@@ -64,17 +64,20 @@ def show_selecteddesc(id):
         print(error)
         msg = "falha"
         return msg
-    
-def update_desc(editnome, editcompetencia, editcartaoacivale, editunimed, editdesp_unimed, editfarmacia, editid):
+
+def update_desc(nome, valorinss, valorirrf, cafe, marmita, os, multas, pensao, deslocamento, rebdespviagens, outrosdescontos, outrosrecebimentos, valorpagdeposito, competencia, cartaoacivale, unimed, desp_unimed, farmacia, editid):
     try:
-        if editnome != "" and editcompetencia != "" and editcartaoacivale != "" and editunimed != "" and editdesp_unimed != "" and editfarmacia != "":
+        if (nome != "" and valorinss != "" and valorirrf != "" and cafe != "" and marmita != "" and os != ""
+        and multas != "" and pensao != "" and deslocamento != "" and rebdespviagens != "" and outrosdescontos != ""
+        and outrosrecebimentos != "" and valorpagdeposito != "" and competencia != "" and cartaoacivale != ""
+        and unimed != "" and desp_unimed != "" and farmacia != "" and id != ""):
             connect = sqlite3.connect("web/databases/storage.db")
             cursor = connect.cursor()
-            print("Conexão com o banco de dados estabelecida com sucesso! update_horas")
-            print(editnome, editcompetencia, editcartaoacivale, editunimed, editdesp_unimed, editfarmacia, editid)
+            print("Conexão com o banco de dados estabelecida com sucesso! update_descontos")
+            print(nome, valorinss, valorirrf, cafe, marmita, os, multas, pensao, deslocamento, rebdespviagens, outrosdescontos, outrosrecebimentos, valorpagdeposito, competencia, cartaoacivale, unimed, desp_unimed, farmacia, editid)
 
-            query = "UPDATE competencia SET nome=?, competencia=?, cartaoacivale=?, unimed=?, desp_unimed=?, farmacia=? WHERE id=?"
-            params = (editnome, editcompetencia, editcartaoacivale, editunimed, editdesp_unimed, editfarmacia, editid)
+            query = "UPDATE competencia SET nome=?, competencia=?, cartao_acivale=?, unimed=?, desp_unimed=?, farmacia=?, valor_inss=?, valor_irrf=?, cafe=?, marmita=?, os=?, multas=?, pensao=?, deslocamento=?, reb_desp_viagens=?, outros_descontos=?, outros_recebimentos=?, valor_pag_deposito=? WHERE id=?"
+            params = (nome, competencia, cartaoacivale, unimed, desp_unimed, farmacia, valorinss, valorirrf, cafe, marmita, os, multas, pensao, deslocamento, rebdespviagens, outrosdescontos, outrosrecebimentos, valorpagdeposito, editid)
             print("Comando SQL:", query)
             print("Parâmetros:", params)
             cursor.execute(query, params)
@@ -94,3 +97,4 @@ def update_desc(editnome, editcompetencia, editcartaoacivale, editunimed, editde
         msg = "falha"
         print(msg)
         return msg
+
