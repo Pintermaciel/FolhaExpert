@@ -3,22 +3,44 @@ import sqlite3
 
 def consultar_tabela_sql():
     # Conectar ao banco de dados
-    conn = sqlite3.connect('dados.db')
-    cursor = conn.cursor()
-
+    connect = sqlite3.connect(r"/home/matheushmfp/Documentos/FolhaExpert1/web/databases/storage.db")
+    cursor = connect.cursor()
     # Consulta SQL
     cursor.execute('''
-        SELECT nome, hn, he50, he65, he75, he100, faltadias, faltahora, cartao_acivale, farmacia, valor_inss, valor_irrf,
-               outros_recebimentos, outros_descontos, cafe, marmita, os, multas, pensao, plantao, deslocamento
-        FROM tabela_sql
-        WHERE nome = "Vinicius Roden Alberton" AND competencia = "Julho 2023"
+        SELECT  nome,
+                competencia,
+                (SELECT salario FROM admissao a WHERE a.nome = c.nome) as salario, 
+                hn,
+                valor_inss,
+                valor_irrf,
+                he50,
+                he65,
+                he75,
+                he100,
+                faltadias,
+                faltahora,
+                cartao_acivale,
+                farmacia,
+                valor_inss,
+                valor_irrf,
+                outros_recebimentos,
+                outros_descontos,
+                cafe,
+                marmita,
+                os,
+                multas,
+                pensao,
+                plantao,
+                deslocamento
+        FROM competencia c
+        WHERE nome = "marcia" AND competencia = "01/2023"
     ''')
 
     # Recuperar os resultados
     resultado = cursor.fetchone()
 
     # Fechar a conexão com o banco de dados
-    conn.close()
+    connect.close()
 
     return resultado
 
@@ -44,8 +66,15 @@ class ReciboPDF(FPDF):
         self.cell(0, 10, f"Página {self.page_no()}", 0, 0, "C")
 
     def add_table_row(self, descricao, base_calculo, vencimentos, descontos):
-        # Verifica se todas as colunas têm valor
-        if not (base_calculo or vencimentos or descontos):
+        # Verifica se a linha contém cabeçalhos
+        if descricao == "DESCRIÇÃO" and base_calculo == "BASE CALCULO" and vencimentos == "VENCIMENTOS" and descontos == "DESCONTOS":
+            return
+
+        # Verifica se todas as colunas têm valor (non-zero)
+        try:
+            if float(base_calculo or 0) == 0 and float(vencimentos or 0) == 0 and float(descontos or 0) == 0:
+                return
+        except ValueError:
             return
 
         # Configurações da tabela
@@ -115,33 +144,45 @@ class ReciboPDF(FPDF):
         self.cell(0, 10, "Assinatura Legível:", 0, 1, "L")
         self.set_font("Arial", "B", 14)
         self.cell(0, 10, assinatura_legivel, 0, 1, "L")
-
+        
+    def calcular_valor_por_hora(self, base_calculo, horas_mensais):
+        try:
+            base_calculo = float(base_calculo)
+            horas_mensais = float(horas_mensais)
+            if horas_mensais != 0:
+                valor_por_hora = base_calculo / horas_mensais
+                return round(valor_por_hora, 2)  # Arredonda para 2 casas decimais
+            else:
+                return 0
+        except ValueError:
+            return 0
 
 
 # Exemplo de uso
 pdf = ReciboPDF()
 # Atribuir os valores obtidos às variáveis da função pdf.criar_recibo()
+valor_por_hora = pdf.calcular_valor_por_hora(resultado_consulta[2], resultado_consulta[3])
 pdf.criar_recibo(
     nome=resultado_consulta[0],
-    mes="Julho 2023",
+    mes=resultado_consulta[1],
     tabela_valores=[
         ("DESCRIÇÃO", "BASE CALCULO", "VENCIMENTOS", "DESCONTOS"),
-        ("SALÁRIO", "", "", str(resultado_consulta[1])),
-        ("HORAS MENSAIS", "", "", str(resultado_consulta[2])),
-        ("VALOR POR HORA", "", "", str(resultado_consulta[3])),
-        ("R$ INSS", "", "", str(resultado_consulta[10])),
-        ("R$ IRRF", "", "", str(resultado_consulta[11])),
+        ("SALÁRIO", str(resultado_consulta[2]), str(resultado_consulta[2]), ""),
+        ("HORAS MENSAIS", str(resultado_consulta[3]), "", ""),
+        ("VALOR POR HORA", str(valor_por_hora), "", ""),
+        ("R$ INSS", "", "", str(resultado_consulta[4])),
+        ("R$ IRRF", "", "", str(resultado_consulta[5])),
         ("OUTROS RECEBIMENTOS", "", "", str(resultado_consulta[12])),
         ("OUTROS DESCONTOS EM FOLHA", "", "", str(resultado_consulta[13])),
-        ("HORAS EXTRAS À 50%", "", "", str(resultado_consulta[4])),
-        ("DSR 50%", "", "", str(resultado_consulta[5])),
+        ("HORAS EXTRAS À 50%", "", "", str(resultado_consulta[10])),
+        ("DSR 50%", "", "", str(resultado_consulta[10])),
         ("HORAS EXTRAS À 65%", "", "", str(resultado_consulta[6])),
         ("DSR 65%", "", "", str(resultado_consulta[7])),
         ("HORAS EXTRAS À 75%", "", "", str(resultado_consulta[8])),
         ("DSR 75%", "", "", str(resultado_consulta[9])),
-        ("HORAS EXTRAS À 100%", "", "", str(resultado_consulta[14])),
-        ("DSR 100%", "", "", str(resultado_consulta[15])),
-        ("TOTAL HORAS EXTRAS E DSR", "", "", ""),
+        ("HORAS EXTRAS À 100%", "", "", str(resultado_consulta[10])),
+        ("DSR 100%", "", "", str(resultado_consulta[10])),
+        ("TOTAL HORAS EXTRAS E DSR", "", "", ""), # linha que soma o total
         ("FALTAS EM DIAS", "", "", str(resultado_consulta[16])),
         ("FALTAS EM HORAS", "", "", str(resultado_consulta[17])),
         ("FALTA INJUSTIFICADA DSR SEMANAL", "", "", ""),
@@ -151,12 +192,12 @@ pdf.criar_recibo(
         ("UNIMED", "", "", ""),
         ("DESP. UNIMED", "", "", ""),
         ("OS", "", "", str(resultado_consulta[20])),
-        ("MARMITAS", "", "", str(resultado_consulta[21])),
+        ("MARMITAS", "", "", str(resultado_consulta[20])),
         ("REMBOLSO DESP. VIAGENS", "", "", ""),
-        ("MULTAS", "", "", str(resultado_consulta[22])),
-        ("DESCONTO", "", "", str(resultado_consulta[23])),
-        ("CAFÉ", "", "", str(resultado_consulta[24])),
-        ("PLANTAO", "", "", str(resultado_consulta[25])),
+        ("MULTAS", "", "", str(resultado_consulta[20])),
+        ("DESCONTO", "", "", str(resultado_consulta[20])),
+        ("CAFÉ", "", "", str(resultado_consulta[20])),
+        ("PLANTAO", "", "", str(resultado_consulta[20])),
         ("PENSAO", "", "", ""),
         ("DESLOCAMENTO", "", "", ""),
         ("FÉRIAS", "", "", ""),
