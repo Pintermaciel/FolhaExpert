@@ -1,5 +1,29 @@
 from fpdf import FPDF
+import sqlite3
 
+def consultar_tabela_sql():
+    # Conectar ao banco de dados
+    conn = sqlite3.connect('dados.db')
+    cursor = conn.cursor()
+
+    # Consulta SQL
+    cursor.execute('''
+        SELECT nome, hn, he50, he65, he75, he100, faltadias, faltahora, cartao_acivale, farmacia, valor_inss, valor_irrf,
+               outros_recebimentos, outros_descontos, cafe, marmita, os, multas, pensao, plantao, deslocamento
+        FROM tabela_sql
+        WHERE nome = "Vinicius Roden Alberton" AND competencia = "Julho 2023"
+    ''')
+
+    # Recuperar os resultados
+    resultado = cursor.fetchone()
+
+    # Fechar a conexão com o banco de dados
+    conn.close()
+
+    return resultado
+
+# Executar a consulta
+resultado_consulta = consultar_tabela_sql()
 
 class ReciboPDF(FPDF):
     def header(self):
@@ -96,46 +120,47 @@ class ReciboPDF(FPDF):
 
 # Exemplo de uso
 pdf = ReciboPDF()
+# Atribuir os valores obtidos às variáveis da função pdf.criar_recibo()
 pdf.criar_recibo(
-    nome="Vinicius Roden Alberton",
+    nome=resultado_consulta[0],
     mes="Julho 2023",
     tabela_valores=[
         ("DESCRIÇÃO", "BASE CALCULO", "VENCIMENTOS", "DESCONTOS"),
-        ("SALÁRIO", "2.262,00", "2.262,00", ""),
-        ("HORAS MENSAIS", "220,00", "", ""),
-        ("VALOR POR HORA", "10,28", "", ""),
-        ("R$ INSS", None, None, None),
-        ("R$ IRRF", None, None, None),
-        ("OUTROS RECEBIMENTOS", None, None, None),
-        ("OUTROS DESCONTOS EM FOLHA", None, None, None),
-        ("HORAS EXTRAS À 50%", "6,00", "", "92,54"),
-        ("DSR 50%", "", "", "#REF!"),
-        ("HORAS EXTRAS À 65%", "1,85", "", "31,39"),
-        ("DSR 65%", "", "", "#REF!"),
-        ("HORAS EXTRAS À 75%", None, None, None),
-        ("DSR 75%", "", "", "#REF!"),
-        ("HORAS EXTRAS À 100%", None, None, None),
-        ("DSR 100%", "", "", "#REF!"),
-        ("TOTAL HORAS EXTRAS E DSR", "7,85", "", "#REF!"),
-        ("FALTAS EM DIAS", None, None, None),
-        ("FALTAS EM HORAS", None, None, None),
-        ("FALTA INJUSTIFICADA DSR SEMANAL", None, None, None),
-        ("CARTÃO ACIVALE", None, None, None),
-        ("FARMACIA", None, None, None),
-        ("VALE", None, None, None),
-        ("UNIMED", None, None, None),
-        ("DESP. UNIMED", None, None, None),
-        ("OS", "14,85", "", ""),
-        ("MARMITAS", None, None, None),
-        ("REMBOLSO DESP. VIAGENS", None, None, None),
-        ("MULTAS", None, None, None),
-        ("DESCONTO", None, None, None),
-        ("CAFÉ", "10,00", "", ""),
-        ("PLANTAO", None, None, None),
-        ("PENSAO", None, None, None),
-        ("DESLOCAMENTO", None, None, None),
-        ("FÉRIAS", None, None, None),
-        ("1/3 FÉRIAS", None, None, None),
+        ("SALÁRIO", "", "", str(resultado_consulta[1])),
+        ("HORAS MENSAIS", "", "", str(resultado_consulta[2])),
+        ("VALOR POR HORA", "", "", str(resultado_consulta[3])),
+        ("R$ INSS", "", "", str(resultado_consulta[10])),
+        ("R$ IRRF", "", "", str(resultado_consulta[11])),
+        ("OUTROS RECEBIMENTOS", "", "", str(resultado_consulta[12])),
+        ("OUTROS DESCONTOS EM FOLHA", "", "", str(resultado_consulta[13])),
+        ("HORAS EXTRAS À 50%", "", "", str(resultado_consulta[4])),
+        ("DSR 50%", "", "", str(resultado_consulta[5])),
+        ("HORAS EXTRAS À 65%", "", "", str(resultado_consulta[6])),
+        ("DSR 65%", "", "", str(resultado_consulta[7])),
+        ("HORAS EXTRAS À 75%", "", "", str(resultado_consulta[8])),
+        ("DSR 75%", "", "", str(resultado_consulta[9])),
+        ("HORAS EXTRAS À 100%", "", "", str(resultado_consulta[14])),
+        ("DSR 100%", "", "", str(resultado_consulta[15])),
+        ("TOTAL HORAS EXTRAS E DSR", "", "", ""),
+        ("FALTAS EM DIAS", "", "", str(resultado_consulta[16])),
+        ("FALTAS EM HORAS", "", "", str(resultado_consulta[17])),
+        ("FALTA INJUSTIFICADA DSR SEMANAL", "", "", ""),
+        ("CARTÃO ACIVALE", "", "", str(resultado_consulta[18])),
+        ("FARMACIA", "", "", str(resultado_consulta[19])),
+        ("VALE", "", "", ""),
+        ("UNIMED", "", "", ""),
+        ("DESP. UNIMED", "", "", ""),
+        ("OS", "", "", str(resultado_consulta[20])),
+        ("MARMITAS", "", "", str(resultado_consulta[21])),
+        ("REMBOLSO DESP. VIAGENS", "", "", ""),
+        ("MULTAS", "", "", str(resultado_consulta[22])),
+        ("DESCONTO", "", "", str(resultado_consulta[23])),
+        ("CAFÉ", "", "", str(resultado_consulta[24])),
+        ("PLANTAO", "", "", str(resultado_consulta[25])),
+        ("PENSAO", "", "", ""),
+        ("DESLOCAMENTO", "", "", ""),
+        ("FÉRIAS", "", "", ""),
+        ("1/3 FÉRIAS", "", "", ""),
     ],
     total="#REF!",
     liquido_a_receber="#REF!",
