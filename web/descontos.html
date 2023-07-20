@@ -255,10 +255,16 @@
                                     <div class="modal-body">
                                         <input type="hidden" name="editid" id="editid">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label for="editnomeInput">Nome</label>
                                                     <p class="form-control" required id="editnomeInput"></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="editcompetenciaInput">Competência</label>
+                                                    <p class="form-control" required id="editcompetenciaInput"></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="editvalorinss">Valor INSS</label>
@@ -288,12 +294,12 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="editcompetenciaInput">Competência</label>
-                                                    <p class="form-control" required id="editcompetenciaInput"></p>
-                                                </div>
-                                                <div class="form-group">
                                                     <label for="editpensao">Pensão</label>
                                                     <input type="text" class="form-control" required id="editpensao" placeholder="Digite o Valor Pensão">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editplantao">Plantão</label>
+                                                    <input type="text" class="form-control" required id="editplantao" placeholder="Digite o Valor Plantão">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="editdeslocamento">Deslocamento</label>
@@ -314,9 +320,11 @@
                                                 <div class="form-group">
                                                     <label for="editvalor_pag_deposito">Valor Pago por Deposito</label>
                                                     <input type="text" class="form-control" required id="editvalor_pag_deposito" placeholder="Digite o Valor Pago por Deposito">
+                                                
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                                         <button type="submit" class="btn btn-primary" onclick="save_edit_js();" id="save_returnadm">Salvar</button>

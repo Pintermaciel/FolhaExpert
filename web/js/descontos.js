@@ -122,14 +122,16 @@ function get_array_values(item, index){
     } else if (index == 24) {
         document.getElementById("editpensao").value = item;
     } else if (index == 25) {
-        document.getElementById("editdeslocamento").value = item;
+        document.getElementById("editplantao").value = item;
     } else if (index == 26) {
-        document.getElementById("editreb_desp_viagens").value = item;
+        document.getElementById("editdeslocamento").value = item;
     } else if (index == 27) {
-        document.getElementById("editoutros_descontos").value = item;
+        document.getElementById("editreb_desp_viagens").value = item;
     } else if (index == 28) {
-        document.getElementById("editoutros_recebimentos").value = item;
+        document.getElementById("editoutros_descontos").value = item;
     } else if (index == 29) {
+        document.getElementById("editoutros_recebimentos").value = item;
+    } else if (index == 30) {
         document.getElementById("editvalor_pag_deposito").value = item;
     } else if (index == 4) {
         document.getElementById("editcompetenciaInput").innerText = item;
@@ -149,6 +151,7 @@ async function save_edit_js() {
         const os = $('#editos').val();
         const multas = $('#editmultas').val();
         const pensao = $('#editpensao').val();
+        const plantao = $('#editplantao').val();
         const deslocamento = $('#editdeslocamento').val();
         const rebdespviagens = $('#editreb_desp_viagens').val();
         const outrosdescontos = $('#editoutros_descontos').val();
@@ -159,7 +162,7 @@ async function save_edit_js() {
         const unimed = $('#editunimed').val(); 
         const desp_unimed = $('#editdesp_unimed').val(); 
         const farmacia = $('#editfarmacia').val(); 
-        const result = await eel.save_editdesc(nome, valorinss, valorirrf, cafe, marmita, os, multas, pensao, deslocamento, rebdespviagens, outrosdescontos, outrosrecebimentos, valorpagdeposito, competencia, cartaoacivale, unimed, desp_unimed, farmacia, editid)(); // Alteração: substituir "id" por "editid"
+        const result = await eel.save_editdesc(nome, valorinss, valorirrf, cafe, marmita, os, multas, pensao, plantao, deslocamento, rebdespviagens, outrosdescontos, outrosrecebimentos, valorpagdeposito, competencia, cartaoacivale, unimed, desp_unimed, farmacia, editid)(); // Alteração: substituir "id" por "editid"
         location.reload();
     }
 }
