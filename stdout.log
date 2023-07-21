@@ -1,38 +1,11 @@
 [(28, 'Matheus Henrique Pinter Maciel', 'Administrativo', 'Analista de Sistemas', '03/2023'), (27, 'matheus', 'Administrativo', 'Analista de Sistemas', '03/2023')]
-[(28, 'Matheus Henrique Pinter Maciel', None, None, None, None, '03/2023'), (27, 'matheus', '0', '0', '0', '0', '03/2023')]
-[(28, 'Matheus Henrique Pinter Maciel', '220', '0', '0', '0', '0', '0', '0', '03/2023'), (27, 'matheus', '0', '0', '0', '0', '0', '0', '0', '03/2023')]
-Conexão com o banco de dados estabelecida com sucesso! show_selectedhoras
-Chamando a função btn_saveeditadm
-Conexão com o banco de dados estabelecida com sucesso! update_horas
-Matheus Henrique Pinter Maciel 03/2023 220 10 0 0 0 0 0 28
-Comando SQL: UPDATE competencia SET nome=?, competencia=?, hn=?, he50=?, he65=?, he75=?, he100=?, faltadias=?, faltahora=? WHERE id=?
-Parâmetros: ('Matheus Henrique Pinter Maciel', '03/2023', '220', '10', '0', '0', '0', '0', '0', '28')
-sucesso
-[(28, 'Matheus Henrique Pinter Maciel', '220', '10', '0', '0', '0', '0', '0', '03/2023'), (27, 'matheus', '0', '0', '0', '0', '0', '0', '0', '03/2023')]
-Conexão com o banco de dados estabelecida com sucesso! show_selectedhoras
-[(28, 'Matheus Henrique Pinter Maciel', 'Administrativo', 'Analista de Sistemas', '03/2023'), (27, 'matheus', 'Administrativo', 'Analista de Sistemas', '03/2023')]
-[(28, 'Matheus Henrique Pinter Maciel', '220', '10', '0', '0', '0', '0', '0', '03/2023'), (27, 'matheus', '0', '0', '0', '0', '0', '0', '0', '03/2023')]
-Conexão com o banco de dados estabelecida com sucesso! show_selectedhoras
-Chamando a função btn_saveeditadm
-Conexão com o banco de dados estabelecida com sucesso! update_horas
-Matheus Henrique Pinter Maciel 03/2023 220 10 20 0 0 0 0 28
-Comando SQL: UPDATE competencia SET nome=?, competencia=?, hn=?, he50=?, he65=?, he75=?, he100=?, faltadias=?, faltahora=? WHERE id=?
-Parâmetros: ('Matheus Henrique Pinter Maciel', '03/2023', '220', '10', '20', '0', '0', '0', '0', '28')
-sucesso
-[(28, 'Matheus Henrique Pinter Maciel', '220', '10', '20', '0', '0', '0', '0', '03/2023'), (27, 'matheus', '0', '0', '0', '0', '0', '0', '0', '03/2023')]
-Conexão com o banco de dados estabelecida com sucesso! show_selectedhoras
-Chamando a função btn_saveeditadm
-Conexão com o banco de dados estabelecida com sucesso! update_horas
-Matheus Henrique Pinter Maciel 03/2023 220 10 20 300 0 0 0 28
-Comando SQL: UPDATE competencia SET nome=?, competencia=?, hn=?, he50=?, he65=?, he75=?, he100=?, faltadias=?, faltahora=? WHERE id=?
-Parâmetros: ('Matheus Henrique Pinter Maciel', '03/2023', '220', '10', '20', '300', '0', '0', '0', '28')
-sucesso
-[(28, 'Matheus Henrique Pinter Maciel', '220', '10', '20', '300', '0', '0', '0', '03/2023'), (27, 'matheus', '0', '0', '0', '0', '0', '0', '0', '03/2023')]
-Conexão com o banco de dados estabelecida com sucesso! show_selectedhoras
-Chamando a função btn_saveeditadm
-Conexão com o banco de dados estabelecida com sucesso! update_horas
-Matheus Henrique Pinter Maciel 03/2023 220 10 20 30 0 0 0 28
-Comando SQL: UPDATE competencia SET nome=?, competencia=?, hn=?, he50=?, he65=?, he75=?, he100=?, faltadias=?, faltahora=? WHERE id=?
-Parâmetros: ('Matheus Henrique Pinter Maciel', '03/2023', '220', '10', '20', '30', '0', '0', '0', '28')
-sucesso
 [(28, 'Matheus Henrique Pinter Maciel', '220', '10', '20', '30', '0', '0', '0', '03/2023'), (27, 'matheus', '0', '0', '0', '0', '0', '0', '0', '03/2023')]
+Conexão com o banco de dados estabelecida com sucesso! show_selectedhoras
+Chamando a função btn_saveeditadm
+Conexão com o banco de dados estabelecida com sucesso! update_horas
+Matheus Henrique Pinter Maciel 03/2023 220 10 20 30 40 0 0 28
+Comando SQL: UPDATE competencia SET nome=?, competencia=?, hn=?, he50=?, he65=?, he75=?, he100=?, faltadias=?, faltahora=? WHERE id=?
+Parâmetros: ('Matheus Henrique Pinter Maciel', '03/2023', '220', '10', '20', '30', '40', '0', '0', '28')
+sucesso
+[(28, 'Matheus Henrique Pinter Maciel', '220', '10', '20', '30', '40', '0', '0', '03/2023'), (27, 'matheus', '0', '0', '0', '0', '0', '0', '0', '03/2023')]
+[(28, 'Matheus Henrique Pinter Maciel', '220', '10', '20', '30', '40', '0', '0', '03/2023'), (27, 'matheus', '0', '0', '0', '0', '0', '0', '0', '03/2023')]

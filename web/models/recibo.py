@@ -19,7 +19,8 @@ def consultar_tabela_sql():
                 diasuteis,
                 feriados,
                 he65,
-                he75
+                he75,
+                he100
         FROM competencia c
         WHERE nome = "Matheus Henrique Pinter Maciel" AND competencia = "03/2023"
     ''')
@@ -43,10 +44,8 @@ class ReciboPDF(FPDF):
         self.set_font("Arial", "B", 12)
         self.cell(0, 10, "MACROFRIO EQUIPAMENTOS E ISOLAMENTOS PARA REFRIGERAÇÃO LTDA", 0, 1, "C", fill=True)
         self.ln(8)
-        self.set_font("Arial", "", 10)
-        self.cell(0, 10, "Recibo de Pagamento", 0, 1, "C")
-        self.ln(10)
-
+        
+        
     def footer(self):
         # Configurações do rodapé
         self.set_y(-15)
@@ -199,13 +198,65 @@ class ReciboPDF(FPDF):
         except ValueError:
             return 0
 
-    def calcular_valor_dsr65(self, valorhe65, diasuteis, feriados):
+    def calcular_valor_dsr75(self, valorhe75, diasuteis, feriados):
         try:
             diasuteis = int(diasuteis)
             feriados = int(feriados)
-            if valorhe65 != 0 and diasuteis != 0 and feriados != 0:
-                valordsr65 = (valorhe65 / diasuteis) * feriados
-                return round(valordsr65, 2)  # Arredonda para 2 casas decimais
+            if valorhe75 != 0 and diasuteis != 0 and feriados != 0:
+                valordsr75 = (valorhe75 / diasuteis) * feriados
+                return round(valordsr75, 2)  # Arredonda para 2 casas decimais
+            else:
+                return 0
+        except ValueError:
+            return 0
+        
+    def calcular_valor_hr100(self, valor_hora, horas_100):
+        try:
+            valor_hora = float(valor_hora)
+            horas_100 = float(horas_100)
+            if valor_hora != 0:
+                valor_he100 = valor_hora * horas_100 * 2.0
+                return round(valor_he100, 2)  # Arredonda para 2 casas decimais
+            else:
+                return 0
+        except ValueError:
+            return 0
+
+    def calcular_valor_dsr100(self, valorhe100, diasuteis, feriados):
+        try:
+            diasuteis = int(diasuteis)
+            feriados = int(feriados)
+            if valorhe100 != 0 and diasuteis != 0 and feriados != 0:
+                valordsr100 = (valorhe100 / diasuteis) * feriados
+                return round(valordsr100, 2)  # Arredonda para 2 casas decimais
+            else:
+                return 0
+        except ValueError:
+            return 0
+        
+    def calcular_total_he(self, horas_50, horas_65, horas_75, horas_100):
+        try:
+            horas_50 = float(horas_50)
+            horas_65 = float(horas_65)
+            horas_75 = float(horas_75)
+            horas_100 = float(horas_100)
+            if horas_50 != 0:
+                total_he = horas_50 + horas_65 + horas_75 + horas_100
+                return int(total_he)
+            else:
+                return 0
+        except ValueError:
+            return 0
+        
+    def calcular_total_valorhe(self, valor_50, valor_65, valor_75, valor_100):
+        try:
+            valor_50 = float(valor_50)
+            valor_65 = float(valor_65)
+            valor_75 = float(valor_75)
+            valor_100 = float(valor_100)
+            if valor_50 != 0:
+                valortotal_he = valor_50 + valor_65 + valor_75 + valor_100
+                return round(valortotal_he, 2)  # Arredonda para 2 casas decimais
             else:
                 return 0
         except ValueError:
@@ -218,9 +269,13 @@ valor_por_hora = pdf.calcular_valor_por_hora(resultado_consulta[2], resultado_co
 valorhe50 = pdf.calcular_valor_hr50(valor_por_hora, resultado_consulta[8])
 valordsr50 = pdf.calcular_valor_dsr50(valorhe50, resultado_consulta[9], resultado_consulta[10])
 valorhe65 = pdf.calcular_valor_hr65(valor_por_hora, resultado_consulta[11])
-valordsr65 = pdf.calcular_valor_dsr50(valorhe65, resultado_consulta[11], resultado_consulta[10])
+valordsr65 = pdf.calcular_valor_dsr65(valorhe65, resultado_consulta[9], resultado_consulta[10])
 valorhe75 = pdf.calcular_valor_hr75(valor_por_hora, resultado_consulta[12])
-valordsr65 = pdf.calcular_valor_dsr50(valorhe65, resultado_consulta[11], resultado_consulta[10])
+valordsr75 = pdf.calcular_valor_dsr75(valorhe75, resultado_consulta[9], resultado_consulta[10])
+valorhe100 = pdf.calcular_valor_hr100(valor_por_hora, resultado_consulta[13])
+valordsr100 = pdf.calcular_valor_dsr100(valorhe100, resultado_consulta[9], resultado_consulta[10])
+totalhe = pdf.calcular_total_he(resultado_consulta[8], resultado_consulta[11], resultado_consulta[12], resultado_consulta[13])
+totalvalorhe = pdf.calcular_total_valorhe(valorhe50, valorhe65, valorhe75, valorhe100)
 
 
 pdf.criar_recibo(
@@ -240,10 +295,10 @@ pdf.criar_recibo(
         ("HORAS EXTRAS À 65%", str(resultado_consulta[11]), str(valorhe65), ""),
         ("DSR 65%", "", str(valordsr65), ""),
         ("HORAS EXTRAS À 75%",str(resultado_consulta[12]), str(valorhe75), ""),
-        ("DSR 75%", "", "", str(resultado_consulta[1])),
-        ("HORAS EXTRAS À 100%", "", "", str(resultado_consulta[1])),
-        ("DSR 100%", "", "", str(resultado_consulta[1])),
-        ("TOTAL HORAS EXTRAS E DSR", "", "", ""), # linha que soma o total
+        ("DSR 75%", "", str(valordsr75), ""),
+        ("HORAS EXTRAS À 100%", str(resultado_consulta[13]), str(valorhe100), ""),
+        ("DSR 100%", "", str(valordsr100), ""),
+        ("TOTAL HORAS EXTRAS E DSR", str(totalhe), str(totalvalorhe), ""), # linha que soma o total
         ("FALTAS EM DIAS", "", "", str(resultado_consulta[1])),
         ("FALTAS EM HORAS", "", "", str(resultado_consulta[1])),
         ("FALTA INJUSTIFICADA DSR SEMANAL", "", "", ""),
