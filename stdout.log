@@ -1,11 +1,12 @@
-[(28, 'Matheus Henrique Pinter Maciel', 'Administrativo', 'Analista de Sistemas', '03/2023'), (27, 'matheus', 'Administrativo', 'Analista de Sistemas', '03/2023')]
-[(28, 'Matheus Henrique Pinter Maciel', '220', '10', '20', '30', '0', '0', '0', '03/2023'), (27, 'matheus', '0', '0', '0', '0', '0', '0', '0', '03/2023')]
+[(31, 'Matheus Henrique Pinter Maciel', 'Administrativo', 'Analista de Sistemas', '01')]
+[(31, 'Matheus Henrique Pinter Maciel', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1000', '01')]
+31
 Conexão com o banco de dados estabelecida com sucesso! show_selectedhoras
-Chamando a função btn_saveeditadm
-Conexão com o banco de dados estabelecida com sucesso! update_horas
-Matheus Henrique Pinter Maciel 03/2023 220 10 20 30 40 0 0 28
-Comando SQL: UPDATE competencia SET nome=?, competencia=?, hn=?, he50=?, he65=?, he75=?, he100=?, faltadias=?, faltahora=? WHERE id=?
-Parâmetros: ('Matheus Henrique Pinter Maciel', '03/2023', '220', '10', '20', '30', '40', '0', '0', '28')
+Chamando a função save_editdesc
+Conexão com o banco de dados estabelecida com sucesso! update_descontos
+Matheus Henrique Pinter Maciel 0 0 0 0 0 0 0 0 0 0 0 0 500 01 31
+Comando SQL: UPDATE competencia SET nome=?, competencia=?, valor_inss=?, valor_irrf=?, cafe=?, marmita=?, os=?, multas=?, pensao=?, plantao=?, deslocamento=?, reb_desp_viagens=?, outros_descontos=?, outros_recebimentos=?, valor_pag_deposito=? WHERE id=?
+Parâmetros: ('Matheus Henrique Pinter Maciel', '01', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '500', '31')
 sucesso
-[(28, 'Matheus Henrique Pinter Maciel', '220', '10', '20', '30', '40', '0', '0', '03/2023'), (27, 'matheus', '0', '0', '0', '0', '0', '0', '0', '03/2023')]
-[(28, 'Matheus Henrique Pinter Maciel', '220', '10', '20', '30', '40', '0', '0', '03/2023'), (27, 'matheus', '0', '0', '0', '0', '0', '0', '0', '03/2023')]
+[(31, 'Matheus Henrique Pinter Maciel', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '500', '01')]
+[(31, 'Matheus Henrique Pinter Maciel', '0', '0', '18', '0', '01')]
