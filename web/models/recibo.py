@@ -1,7 +1,9 @@
 from fpdf import FPDF
 import sqlite3
+import os
+from pathlib import Path
 
-def consultar_tabela_sql():
+def consultar_tabela_sql(nome, competencia):
     # Conectar ao banco de dados
     connect = sqlite3.connect(r"/home/matheushmfp/Documentos/FolhaExpert1/web/databases/storage.db")
     cursor = connect.cursor()
@@ -37,8 +39,8 @@ def consultar_tabela_sql():
                 deslocamento,
                 valor_pag_deposito
         FROM competencia c
-        WHERE nome = "Matheus Henrique Pinter Maciel" AND competencia = "01"
-    ''')
+        WHERE nome = ? AND competencia = ?
+    ''', (nome, competencia))
 
     # Recuperar os resultados
     resultado = cursor.fetchone()
@@ -47,9 +49,6 @@ def consultar_tabela_sql():
     connect.close()
 
     return resultado
-
-# Executar a consulta
-resultado_consulta = consultar_tabela_sql()
 
 class ReciboPDF(FPDF):
     def header(self):
@@ -360,88 +359,106 @@ class ReciboPDF(FPDF):
         
         
 
-# Exemplo de uso
-pdf = ReciboPDF()
-# Atribuir os valores obtidos às variáveis da função pdf.criar_recibo()
-valor_por_hora = pdf.calcular_valor_por_hora(resultado_consulta[2], resultado_consulta[3])
-valorhe50 = pdf.calcular_valor_hr50(valor_por_hora, resultado_consulta[8])
-valordsr50 = pdf.calcular_valor_dsr50(valorhe50, resultado_consulta[9], resultado_consulta[10])
-valorhe65 = pdf.calcular_valor_hr65(valor_por_hora, resultado_consulta[11])
-valordsr65 = pdf.calcular_valor_dsr65(valorhe65, resultado_consulta[9], resultado_consulta[10])
-valorhe75 = pdf.calcular_valor_hr75(valor_por_hora, resultado_consulta[12])
-valordsr75 = pdf.calcular_valor_dsr75(valorhe75, resultado_consulta[9], resultado_consulta[10])
-valorhe100 = pdf.calcular_valor_hr100(valor_por_hora, resultado_consulta[13])
-valordsr100 = pdf.calcular_valor_dsr100(valorhe100, resultado_consulta[9], resultado_consulta[10])
-totalhe = pdf.calcular_total_he(resultado_consulta[8], resultado_consulta[11], resultado_consulta[12], resultado_consulta[13])
-totalvalorhe = pdf.calcular_valor_total_he(valorhe50, valorhe65, valorhe75, valorhe100, valordsr50, valordsr65, valordsr75, valordsr100)
-valorfdias = pdf.calcula_valor_fdias(resultado_consulta[14], valor_por_hora)
-valorfhora = pdf.calcula_valor_fhora(resultado_consulta[15], valor_por_hora)
-totalvencimentos = pdf.calcula_total_vencimentos(resultado_consulta[2], resultado_consulta[6], totalvalorhe, resultado_consulta[22])
-total_descontos = pdf.calcula_total_descontos(resultado_consulta[4],
-                                                resultado_consulta[5],
-                                                resultado_consulta[7],
-                                                valorfdias,
-                                                valorfhora,
-                                                resultado_consulta[16],
-                                                resultado_consulta[17],
-                                                resultado_consulta[18],
-                                                resultado_consulta[19],
-                                                resultado_consulta[20],
-                                                resultado_consulta[21],
-                                                resultado_consulta[23],
-                                                resultado_consulta[24],
-                                                resultado_consulta[25],
-                                                resultado_consulta[26],
-                                                resultado_consulta[27])
-liquido_receber = pdf.calcula_liquido_receber(totalvencimentos, total_descontos)
-carteira_receber = pdf.calcula_carteira_receber(liquido_receber, resultado_consulta[28])
+def gerar_recibo(nome, competencia):
+    # Executar a consulta
+    resultado_consulta = consultar_tabela_sql(nome, competencia)
+    pdf = ReciboPDF()
+    # Atribuir os valores obtidos às variáveis da função pdf.criar_recibo()
+    valor_por_hora = pdf.calcular_valor_por_hora(resultado_consulta[2], resultado_consulta[3])
+    valorhe50 = pdf.calcular_valor_hr50(valor_por_hora, resultado_consulta[8])
+    valordsr50 = pdf.calcular_valor_dsr50(valorhe50, resultado_consulta[9], resultado_consulta[10])
+    valorhe65 = pdf.calcular_valor_hr65(valor_por_hora, resultado_consulta[11])
+    valordsr65 = pdf.calcular_valor_dsr65(valorhe65, resultado_consulta[9], resultado_consulta[10])
+    valorhe75 = pdf.calcular_valor_hr75(valor_por_hora, resultado_consulta[12])
+    valordsr75 = pdf.calcular_valor_dsr75(valorhe75, resultado_consulta[9], resultado_consulta[10])
+    valorhe100 = pdf.calcular_valor_hr100(valor_por_hora, resultado_consulta[13])
+    valordsr100 = pdf.calcular_valor_dsr100(valorhe100, resultado_consulta[9], resultado_consulta[10])
+    totalhe = pdf.calcular_total_he(resultado_consulta[8], resultado_consulta[11], resultado_consulta[12], resultado_consulta[13])
+    totalvalorhe = pdf.calcular_valor_total_he(valorhe50, valorhe65, valorhe75, valorhe100, valordsr50, valordsr65, valordsr75, valordsr100)
+    valorfdias = pdf.calcula_valor_fdias(resultado_consulta[14], valor_por_hora)
+    valorfhora = pdf.calcula_valor_fhora(resultado_consulta[15], valor_por_hora)
+    totalvencimentos = pdf.calcula_total_vencimentos(resultado_consulta[2], resultado_consulta[6], totalvalorhe, resultado_consulta[22])
+    total_descontos = pdf.calcula_total_descontos(resultado_consulta[4],
+                                                    resultado_consulta[5],
+                                                    resultado_consulta[7],
+                                                    valorfdias,
+                                                    valorfhora,
+                                                    resultado_consulta[16],
+                                                    resultado_consulta[17],
+                                                    resultado_consulta[18],
+                                                    resultado_consulta[19],
+                                                    resultado_consulta[20],
+                                                    resultado_consulta[21],
+                                                    resultado_consulta[23],
+                                                    resultado_consulta[24],
+                                                    resultado_consulta[25],
+                                                    resultado_consulta[26],
+                                                    resultado_consulta[27])
+    liquido_receber = pdf.calcula_liquido_receber(totalvencimentos, total_descontos)
+    carteira_receber = pdf.calcula_carteira_receber(liquido_receber, resultado_consulta[28])
 
-pdf.criar_recibo(
-    nome=resultado_consulta[0],
-    mes=resultado_consulta[1],
-    tabela_valores=[
-        ("DESCRIÇÃO", "BASE CALCULO", "VENCIMENTOS", "DESCONTOS"),
-        ("SALÁRIO", str(resultado_consulta[2]), str(resultado_consulta[2]), ""),
-        ("HORAS MENSAIS", str(resultado_consulta[3]), "", ""),
-        ("VALOR POR HORA", str(valor_por_hora), "", ""),
-        ("OUTROS RECEBIMENTOS", "", str(resultado_consulta[6]), ""),
-        ("R$ INSS", "", "", str(resultado_consulta[4])),
-        ("R$ IRRF", "", "", str(resultado_consulta[5])),
-        ("OUTROS DESCONTOS EM FOLHA", "", "", str(resultado_consulta[7])),
-        ("HORAS EXTRAS À 50%", str(resultado_consulta[8]), str(valorhe50), ""),
-        ("DSR 50%", "", str(valordsr50), ""),
-        ("HORAS EXTRAS À 65%", str(resultado_consulta[11]), str(valorhe65), ""),
-        ("DSR 65%", "", str(valordsr65), ""),
-        ("HORAS EXTRAS À 75%",str(resultado_consulta[12]), str(valorhe75), ""),
-        ("DSR 75%", "", str(valordsr75), ""),
-        ("HORAS EXTRAS À 100%", str(resultado_consulta[13]), str(valorhe100), ""),
-        ("DSR 100%", "", str(valordsr100), ""),
-        ("TOTAL HORAS EXTRAS E DSR", str(totalhe), str(totalvalorhe), ""), 
-        ("FALTAS EM DIAS", str(resultado_consulta[14]), "", str(valorfdias)),
-        ("FALTAS EM HORAS", str(resultado_consulta[15]), "", str(valorfhora)),
-        ("FALTA INJUSTIFICADA DSR SEMANAL", str(resultado_consulta[14]), "", str(valorfdias)),
-        ("CARTÃO ACIVALE", "", "", str(resultado_consulta[16])),
-        ("FARMACIA", "", "", str(resultado_consulta[17])),
-        ("VALE", "", "", ""),
-        ("UNIMED", "", "", str(resultado_consulta[18])),
-        ("DESP. UNIMED", "", "", str(resultado_consulta[19])),
-        ("OS", "", "", str(resultado_consulta[20])),
-        ("MARMITAS", "", "", str(resultado_consulta[21])),
-        ("REMBOLSO DESP. VIAGENS", "", str(resultado_consulta[22]), ""),
-        ("MULTAS", "", "", str(resultado_consulta[23])),
-        ("CAFÉ", "", "", str(resultado_consulta[24])),
-        ("PLANTAO", "", "", str(resultado_consulta[25])),
-        ("PENSAO", "", "", str(resultado_consulta[26])),
-        ("DESLOCAMENTO", "", "", str(resultado_consulta[27])),
-        ("FÉRIAS", "", "", ""),
-        ("1/3 FÉRIAS", "", "", ""),
-        ("TOTAL", "" , str(totalvencimentos), str(total_descontos))
-    ],
-    liquido_a_receber=str(liquido_receber),
-    valor_pago_deposito=str(resultado_consulta[28]),
-    valor_receber_carteira=str(carteira_receber),
-    recebido_em="__________________",
-    assinatura_legivel='''__________________________'''
-)
+    pdf.criar_recibo(
+        nome=resultado_consulta[0],
+        mes=resultado_consulta[1],
+        tabela_valores=[
+            ("DESCRIÇÃO", "BASE CALCULO", "VENCIMENTOS", "DESCONTOS"),
+            ("SALÁRIO", str(resultado_consulta[2]), str(resultado_consulta[2]), ""),
+            ("HORAS MENSAIS", str(resultado_consulta[3]), "", ""),
+            ("VALOR POR HORA", str(valor_por_hora), "", ""),
+            ("OUTROS RECEBIMENTOS", "", str(resultado_consulta[6]), ""),
+            ("R$ INSS", "", "", str(resultado_consulta[4])),
+            ("R$ IRRF", "", "", str(resultado_consulta[5])),
+            ("OUTROS DESCONTOS EM FOLHA", "", "", str(resultado_consulta[7])),
+            ("HORAS EXTRAS À 50%", str(resultado_consulta[8]), str(valorhe50), ""),
+            ("DSR 50%", "", str(valordsr50), ""),
+            ("HORAS EXTRAS À 65%", str(resultado_consulta[11]), str(valorhe65), ""),
+            ("DSR 65%", "", str(valordsr65), ""),
+            ("HORAS EXTRAS À 75%",str(resultado_consulta[12]), str(valorhe75), ""),
+            ("DSR 75%", "", str(valordsr75), ""),
+            ("HORAS EXTRAS À 100%", str(resultado_consulta[13]), str(valorhe100), ""),
+            ("DSR 100%", "", str(valordsr100), ""),
+            ("TOTAL HORAS EXTRAS E DSR", str(totalhe), str(totalvalorhe), ""), 
+            ("FALTAS EM DIAS", str(resultado_consulta[14]), "", str(valorfdias)),
+            ("FALTAS EM HORAS", str(resultado_consulta[15]), "", str(valorfhora)),
+            ("FALTA INJUSTIFICADA DSR SEMANAL", str(resultado_consulta[14]), "", str(valorfdias)),
+            ("CARTÃO ACIVALE", "", "", str(resultado_consulta[16])),
+            ("FARMACIA", "", "", str(resultado_consulta[17])),
+            ("VALE", "", "", ""),
+            ("UNIMED", "", "", str(resultado_consulta[18])),
+            ("DESP. UNIMED", "", "", str(resultado_consulta[19])),
+            ("OS", "", "", str(resultado_consulta[20])),
+            ("MARMITAS", "", "", str(resultado_consulta[21])),
+            ("REMBOLSO DESP. VIAGENS", "", str(resultado_consulta[22]), ""),
+            ("MULTAS", "", "", str(resultado_consulta[23])),
+            ("CAFÉ", "", "", str(resultado_consulta[24])),
+            ("PLANTAO", "", "", str(resultado_consulta[25])),
+            ("PENSAO", "", "", str(resultado_consulta[26])),
+            ("DESLOCAMENTO", "", "", str(resultado_consulta[27])),
+            ("FÉRIAS", "", "", ""),
+            ("1/3 FÉRIAS", "", "", ""),
+            ("TOTAL", "" , str(totalvencimentos), str(total_descontos))
+        ],
+        liquido_a_receber=str(liquido_receber),
+        valor_pago_deposito=str(resultado_consulta[28]),
+        valor_receber_carteira=str(carteira_receber),
+        recebido_em="__________________",
+        assinatura_legivel='''__________________________'''
+    )
 
-pdf.output("recibo.pdf", "F")
+    nome = resultado_consulta[0]
+    mes = resultado_consulta[1]
+    print(nome, mes)
+    # Obtenha o caminho para a pasta "Downloads" do cliente
+    pasta_downloads = os.path.expanduser("~/Downloads")
+
+    # Crie a pasta "recibos" dentro da pasta "Downloads" (caso não exista)
+    pasta_recibos = os.path.join(pasta_downloads, "recibos")
+    if not os.path.exists(pasta_recibos):
+        os.makedirs(pasta_recibos)
+
+    # Substitua o caractere "/" por "-"
+    nome_arquivo = f"recibo_{nome.replace(' ', '_')}_{mes.replace('/', '-')}.pdf"
+    caminho_arquivo = os.path.join(pasta_recibos, nome_arquivo)
+
+    # Salve o PDF na pasta "recibos"
+    pdf.output(caminho_arquivo, "F")

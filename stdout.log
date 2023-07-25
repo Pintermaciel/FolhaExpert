@@ -1,12 +1,20 @@
-[(31, 'Matheus Henrique Pinter Maciel', 'Administrativo', 'Analista de Sistemas', '01')]
-[(31, 'Matheus Henrique Pinter Maciel', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1000', '01')]
-31
-Conexão com o banco de dados estabelecida com sucesso! show_selectedhoras
-Chamando a função save_editdesc
-Conexão com o banco de dados estabelecida com sucesso! update_descontos
-Matheus Henrique Pinter Maciel 0 0 0 0 0 0 0 0 0 0 0 0 500 01 31
-Comando SQL: UPDATE competencia SET nome=?, competencia=?, valor_inss=?, valor_irrf=?, cafe=?, marmita=?, os=?, multas=?, pensao=?, plantao=?, deslocamento=?, reb_desp_viagens=?, outros_descontos=?, outros_recebimentos=?, valor_pag_deposito=? WHERE id=?
-Parâmetros: ('Matheus Henrique Pinter Maciel', '01', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '500', '31')
-sucesso
-[(31, 'Matheus Henrique Pinter Maciel', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '500', '01')]
-[(31, 'Matheus Henrique Pinter Maciel', '0', '0', '18', '0', '01')]
+[(33, 'Matheus Henrique Pinter Maciel', 'Administrativo', 'Analista de Sistemas', '03/2023')]
+Matheus Henrique Pinter Maciel 03/2023
+Matheus Henrique Pinter Maciel 03/2023
+Matheus Henrique Pinter Maciel 03/2023
+Matheus Henrique Pinter Maciel 03/2023
+Matheus Henrique Pinter Maciel 03/2023
+Matheus Henrique Pinter Maciel 03/2023
+[(21, 'Matheus Henrique Pinter Maciel', '000', 'Macrofrio', 'Administrativo', 'Analista de Sistemas', '0', '2512.50', '0')]
+[(33, 'Matheus Henrique Pinter Maciel', 'Administrativo', 'Analista de Sistemas', '03/2023')]
+Chamando a função btn_save
+Conexão com o banco de dados estabelecida com sucesso!
+[(34, 'Matheus Henrique Pinter Maciel', 'Administrativo', 'Analista de Sistemas', '01/2023'), (33, 'Matheus Henrique Pinter Maciel', 'Administrativo', 'Analista de Sistemas', '03/2023')]
+Matheus Henrique Pinter Maciel 01/2023
+Matheus Henrique Pinter Maciel 01/2023
+Conexão com o banco de dados estabelecida com sucesso! show_selectedeleteCompetencia
+34
+[(33, 'Matheus Henrique Pinter Maciel', 'Administrativo', 'Analista de Sistemas', '03/2023')]
+Conexão com o banco de dados estabelecida com sucesso! show_selectedeleteCompetencia
+33
+[]

@@ -39,6 +39,8 @@ function showCompetencia(item, index){
     var td5 = document.createElement("td");
 
     var id = item[0]
+    var nome = item[1]
+    var competencia = item[4]
     td.innerText = item[0]
     td1.innerText = item[1]
     td2.innerText = item[2]
@@ -53,7 +55,7 @@ function showCompetencia(item, index){
     btnInfo.classList.add("btn", "btn-info", "btn-circle");
     btnInfo.setAttribute("type", "button");
     btnInfo.setAttribute("data-ripple-color", "dark");
-    btnInfo.setAttribute("onclick", "btn_edit('" + id + "')");
+    btnInfo.setAttribute("onclick", "btn_edit('" + nome + "', '" + competencia + "')");
     btnInfo.setAttribute("style", "margin:5px");
 
     btnDelete.classList.add("btn", "btn-danger", "btn-circle");
@@ -80,11 +82,11 @@ function showCompetencia(item, index){
 }
 
 // Editar Admissão
-async function btn_edit(id){
+async function btn_edit(nome, competencia){
     // Função chamada quando o botão de edição de um registro de admissão é clicado
     // Aqui você pode realizar as ações necessárias para obter os dados do registro a ser editado e enviar ao Python
-    await eel.get_competencia(id)();
-    $('#editmodal').modal("show");
+    alert("Recibo Gerado dentro da pasta Downloads com Sucesso!")
+    await eel.get_recibo(nome, competencia);
 }
 
 eel.expose(action_editcomp)

@@ -7,6 +7,7 @@ from web.models.competencia import showallrecordscompetencia, save_newcomp, show
 from web.models.horas import showallrecordshrs, show_selectedhrs, update_horas
 from web.models.convenios import showallrecordsconv, show_selectedconv, update_conv
 from web.models.descontos import showallrecordsdesc, show_selecteddesc, update_desc
+from web.models.recibo import gerar_recibo
 import sys
 
 # Set sys.stdout and sys.stderr to writable objects
@@ -501,6 +502,18 @@ def save_editdesc(nome, valorinss, valorirrf, cafe, marmita, os, multas, pensao,
     print("Chamando a função save_editdesc")
     msg = update_desc(nome, valorinss, valorirrf, cafe, marmita, os, multas, pensao, plantao, deslocamento, rebdespviagens, outrosdescontos, outrosrecebimentos, valorpagdeposito, competencia, editid)
 
+"""RECIBO"""
+@eel.expose
+def get_recibo(nome, competencia):
+    """
+    Função que busca um registro de Admissão pelo ID e exibe os dados na interface de edição.
+
+    Args:
+        id (int): ID do registro de Admissão.
+    """
+    print(nome, competencia)
+    recibo = gerar_recibo(nome, competencia)
+    return recibo
 """START"""
 
 eel.start(
