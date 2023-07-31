@@ -449,7 +449,7 @@ def gerar_recibo(nome, competencia):
     mes = resultado_consulta[1]
     print(nome, mes)
     # Obtenha o caminho para a pasta "Downloads" do cliente
-    pasta_downloads = os.path.expanduser("~/Downloads")
+    pasta_downloads = os.path.join(os.path.expanduser("~"), "Downloads")
 
     # Crie a pasta "recibos" dentro da pasta "Downloads" (caso não exista)
     pasta_recibos = os.path.join(pasta_downloads, "recibos")
