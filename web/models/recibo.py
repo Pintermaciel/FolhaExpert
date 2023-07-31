@@ -5,7 +5,7 @@ from pathlib import Path
 
 def consultar_tabela_sql(nome, competencia):
     # Conectar ao banco de dados
-    connect = sqlite3.connect(r"/home/matheushmfp/Documentos/FolhaExpert1/web/databases/storage.db")
+    connect = sqlite3.connect(r"web/databases/storage.db")
     cursor = connect.cursor()
     # Consulta SQL
     cursor.execute('''
