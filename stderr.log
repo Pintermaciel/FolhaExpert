@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "C:\Users\pinte\Downloads\FolhaExpert-main\FolhaExpert-main\main.py", line 519, in <module>
+    eel.start(
+  File "C:\Users\pinte\Downloads\FolhaExpert-main\FolhaExpert-main\venv\Lib\site-packages\eel\__init__.py", line 200, in start
+    run_lambda()
+  File "C:\Users\pinte\Downloads\FolhaExpert-main\FolhaExpert-main\venv\Lib\site-packages\eel\__init__.py", line 191, in run_lambda
+    btl.run(
+  File "C:\Users\pinte\Downloads\FolhaExpert-main\FolhaExpert-main\venv\Lib\site-packages\bottle.py", line 3175, in run
+    server.run(app)
+  File "C:\Users\pinte\Downloads\FolhaExpert-main\FolhaExpert-main\venv\Lib\site-packages\bottle_websocket\server.py", line 17, in run
+    server.serve_forever()
+  File "C:\Users\pinte\Downloads\FolhaExpert-main\FolhaExpert-main\venv\Lib\site-packages\gevent\baseserver.py", line 398, in serve_forever
+    self.start()
+  File "C:\Users\pinte\Downloads\FolhaExpert-main\FolhaExpert-main\venv\Lib\site-packages\gevent\baseserver.py", line 336, in start
+    self.init_socket()
+  File "C:\Users\pinte\Downloads\FolhaExpert-main\FolhaExpert-main\venv\Lib\site-packages\gevent\pywsgi.py", line 1530, in init_socket
+    StreamServer.init_socket(self)
+  File "C:\Users\pinte\Downloads\FolhaExpert-main\FolhaExpert-main\venv\Lib\site-packages\gevent\server.py", line 173, in init_socket
+    self.socket = self.get_listener(self.address, self.backlog, self.family)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pinte\Downloads\FolhaExpert-main\FolhaExpert-main\venv\Lib\site-packages\gevent\server.py", line 185, in get_listener
+    return _tcp_listener(address, backlog=backlog, reuse_addr=cls.reuse_addr, family=family)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pinte\Downloads\FolhaExpert-main\FolhaExpert-main\venv\Lib\site-packages\gevent\server.py", line 264, in _tcp_listener
+    sock.bind(address)
+  File "C:\Users\pinte\Downloads\FolhaExpert-main\FolhaExpert-main\venv\Lib\site-packages\gevent\_socketcommon.py", line 547, in bind
+    return self._sock.bind(address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [WinError 10048] Normalmente é permitida apenas uma utilização de cada endereço de soquete (protocolo/endereço de rede/porta): ('localhost', 8000)
