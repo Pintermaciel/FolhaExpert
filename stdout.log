@@ -1,1 +1,4 @@
 [(35, 'Matheus Henrique Pinter Maciel', 'Administrativo', 'Analista de Sistemas', '1')]
+Conexão com o banco de dados estabelecida com sucesso! show_selectedSetor
+[(21, 'Matheus Henrique Pinter Maciel', '000', 'Macrofrio', 'Administrativo', 'Analista de Sistemas', '0', '2512.50', '0')]
+Conexão com o banco de dados estabelecida com sucesso! show_selectedAdmissao

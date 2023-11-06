@@ -486,7 +486,24 @@ def get_desc(id):
     eel.action_editdesc(selected_comp)
     
 @eel.expose
-def save_editdesc(nome, valorinss, valorirrf, cafe, marmita, os, multas, pensao, plantao, deslocamento, rebdespviagens, outrosdescontos, outrosrecebimentos, valorpagdeposito, competencia, editid):
+def save_editdesc(
+    nome,
+    valorinss,
+    valorirrf,
+    cafe,
+    marmita,
+    os,
+    multas,
+    pensao,
+    plantao,
+    deslocamento,
+    rebdespviagens,
+    outrosdescontos,
+    outrosrecebimentos,
+    valorpagdeposito,
+    competencia,
+    editid
+    ):
     """
     Função que atualiza um registro de Admissão no banco de dados.
 
@@ -500,7 +517,23 @@ def save_editdesc(nome, valorinss, valorirrf, cafe, marmita, os, multas, pensao,
         editid (int): ID do registro de Admissão a ser atualizado.
     """
     print("Chamando a função save_editdesc")
-    msg = update_desc(nome, valorinss, valorirrf, cafe, marmita, os, multas, pensao, plantao, deslocamento, rebdespviagens, outrosdescontos, outrosrecebimentos, valorpagdeposito, competencia, editid)
+    msg = update_desc(nome,
+                    valorinss, 
+                    valorirrf, 
+                    cafe, 
+                    marmita, 
+                    os, 
+                    multas, 
+                    pensao, 
+                    plantao, 
+                    deslocamento, 
+                    rebdespviagens, 
+                    outrosdescontos, 
+                    outrosrecebimentos, 
+                    valorpagdeposito, 
+                    competencia, 
+                    editid
+                    )
 
 """RECIBO"""
 @eel.expose

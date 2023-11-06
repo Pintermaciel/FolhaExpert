@@ -44,7 +44,16 @@ def save_newadm(nome, cpf, empresa, setor, cargo, salariof, salario, dataadm):
         print("Conexão com o banco de dados estabelecida com sucesso!")
 
         if nome != "" and cpf != "" and empresa != "" and setor != "" and cargo != "" and salariof != "" and salario != "" and dataadm != "":
-            cursor.execute("INSERT INTO admissao(nome, cpf, empresa, setor, cargo, salario_folha, salario, data_admissao) VALUES(?,?,?,?,?,?,?,?)", (nome,cpf,empresa,setor,cargo,salariof,salario,dataadm))
+            cursor.execute(
+                "INSERT INTO admissao(nome, cpf, empresa, setor, cargo, salario_folha, salario, data_admissao) VALUES(?,?,?,?,?,?,?,?)",
+                 (nome,
+                 cpf,
+                 empresa,
+                 setor,
+                 cargo,
+                 salariof,
+                 salario,
+                 dataadm))
             connect.commit()
             connect.close()
             msg = "sucesso"
@@ -171,7 +180,9 @@ def update_adm(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedi
         print("Conexão com o banco de dados estabelecida com sucesso! update_adm")
         print(nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid)
 
-        if nomeedit != "" and cpfedit != "" and empresaedit != "" and setoredit != "" and cargoedit != "" and salarioedit != "" and cargoedit != "" and salariofedit != "" and dataadmedit != "":
+        if (nomeedit != "" and cpfedit != "" and empresaedit != "" and setoredit != "" and
+            cargoedit != "" and salarioedit != "" and cargoedit != "" and salariofedit != "" and
+            dataadmedit != ""):
             query = "UPDATE admissao SET nome=?, cpf=?, empresa=?, setor=?, cargo=?, salario_folha=?, salario=?, data_admissao=? WHERE id=?"
             params = (nomeedit, cpfedit, empresaedit, setoredit, cargoedit, salariofedit, salarioedit, dataadmedit, editid)
             print("Comando SQL:", query)
